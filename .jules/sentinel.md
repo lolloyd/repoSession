@@ -1,0 +1,4 @@
+## 2025-05-18 - Socket.IO Uncaught TypeError Crash on Malformed Payloads
+**Vulnerability:** Socket.IO listeners destructuring payloads directly (e.g. `socket.on('event', ({ key }) => ...)`) or calling `.trim()` on unvalidated inputs threw uncaught `TypeError` when sent `null`, numbers, or non-string values, crashing the entire Node server process (DoS).
+**Learning:** Event listeners in Express/Socket.IO lack runtime schema enforcement by default. Malformed client packets directly trigger server-side runtime exceptions if not safely defaulted (`data || {}`) and type-checked before invoking string/array methods.
+**Prevention:** Always fallback destructuring using `(data || {})` and enforce `typeof val === 'string'` or explicit type guards on user-supplied parameters before operating on them.

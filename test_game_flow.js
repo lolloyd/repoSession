@@ -13,7 +13,8 @@ async function runTest() {
   const roomManager = new RoomManager(io);
 
   io.on('connection', (socket) => {
-    socket.on('join_room', ({ roomCode, playerName, avatar }) => {
+    socket.on('join_room', (data) => {
+      const { roomCode, playerName, avatar } = data || {};
       const { room, player } = roomManager.joinRoom(socket, roomCode, playerName, avatar);
       socket.emit('join_success', { roomCode: room.roomCode, playerId: player.id });
     });
@@ -21,9 +22,15 @@ async function runTest() {
       const room = roomManager.getRoomBySocket(socket.id);
       if (room) room.startGame(socket.id);
     });
-    socket.on('submit_answer', ({ answer }) => {
+    socket.on('submit_answer', (data) => {
+      const { answer } = data || {};
       const room = roomManager.getRoomBySocket(socket.id);
       if (room) room.processAnswer(socket.id, answer);
+    });
+    socket.on('send_reaction', (data) => {
+      const { emoji } = data || {};
+      const room = roomManager.getRoomBySocket(socket.id);
+      if (room) room.sendReaction(socket.id, emoji);
     });
     socket.on('skip_round', () => {
       const room = roomManager.getRoomBySocket(socket.id);
@@ -116,6 +123,15 @@ async function runTest() {
   console.log(`✓ VERIFIED: Round ended immediately! Solver: ${p1State.roundWinner.name} (+${p1State.roundWinner.pointsAwarded} pts)`);
   const alicePlayer = p1State.players.find(p => p.name === 'Alice');
   console.log(`✓ Alice score: ${alicePlayer.score} pts, streak: ${alicePlayer.streak}`);
+
+  // Step 6: Security - Malformed payload resilience check
+  console.log('6. Testing Security Resilience with malformed socket inputs...');
+  client1.emit('submit_answer', null);
+  client1.emit('submit_answer', { answer: 12345 });
+  client1.emit('send_reaction', null);
+  client1.emit('send_reaction', { emoji: 9999 });
+  await new Promise(r => setTimeout(r, 200));
+  console.log('✓ VERIFIED: Server survived malformed inputs without crashing!');
 
   // Cleanup
   client1.disconnect();
