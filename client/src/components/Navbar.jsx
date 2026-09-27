@@ -108,6 +108,7 @@ export default function Navbar({ roomCode, playerCount, onOpenRules }) {
               </span>
               <button
                 onClick={handleCopyLink}
+                aria-label="Copy invite link for room"
                 title="Copy Invite Link for Teammates"
                 style={{
                   background: copied ? 'var(--c-sage)' : '#ffffff',
@@ -173,6 +174,7 @@ export default function Navbar({ roomCode, playerCount, onOpenRules }) {
         {/* Mute button */}
         <button
           onClick={handleToggleSound}
+          aria-label={muted ? 'Unmute sound effects' : 'Mute sound effects'}
           title={muted ? 'Unmute Sound' : 'Mute Sound'}
           style={{
             background: '#ffffff',

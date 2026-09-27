@@ -158,6 +158,7 @@ export default function LobbyScreen({
                   {isHost && p.isBot && (
                     <button
                       onClick={() => onRemoveBot(p.id)}
+                      aria-label={`Remove ${p.name}`}
                       title="Remove AI Teammate"
                       style={{
                         background: 'none',

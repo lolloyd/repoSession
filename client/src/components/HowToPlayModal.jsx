@@ -29,6 +29,8 @@ export default function HowToPlayModal({ onClose }) {
         {/* Close button */}
         <button
           onClick={onClose}
+          aria-label="Close rules modal"
+          title="Close modal"
           style={{
             position: 'absolute',
             top: '20px',
