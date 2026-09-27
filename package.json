@@ -1,0 +1,21 @@
+{
+  "name": "rebus-project",
+  "version": "1.0.0",
+  "description": "Multiplayer Rebus Puzzle Game for Virtual Teams",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node test_game_flow.js",
+    "build": "npm --prefix client run build",
+    "dev": "node server/index.js",
+    "dev:client": "npm --prefix client run dev"
+  },
+  "keywords": ["rebus", "puzzle", "team-building", "multiplayer", "socket.io", "react"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "socket.io": "^4.8.4"
+  }
+}

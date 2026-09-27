@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+
+  /* Custom 5-Color Pastel Palette:
+     #d19999 (Dusty Rose)
+     #e8b5a2 (Soft Peach)
+     #ebd9b3 (Warm Vanilla)
+     #bcd4a5 (Sage Green)
+     #a3c7bb (Pastel Seafoam)
+  */
+  --c-rose: #d19999;
+  --c-peach: #e8b5a2;
+  --c-vanilla: #ebd9b3;
+  --c-sage: #bcd4a5;
+  --c-seafoam: #a3c7bb;
+
+  /* Deep text variants for WCAG AA accessible contrast */
+  --c-rose-dark: #8c3b3b;
+  --c-peach-dark: #9c4b2f;
+  --c-vanilla-dark: #8a6a24;
+  --c-sage-dark: #3e6323;
+  --c-seafoam-dark: #235c4c;
+
+  /* Light translucent surface tints */
+  --c-rose-bg: rgba(209, 153, 153, 0.16);
+  --c-peach-bg: rgba(232, 181, 162, 0.20);
+  --c-vanilla-bg: rgba(235, 217, 179, 0.28);
+  --c-sage-bg: rgba(188, 212, 165, 0.22);
+  --c-seafoam-bg: rgba(163, 199, 187, 0.22);
+
+  /* Subtle pastel borders */
+  --c-rose-border: rgba(209, 153, 153, 0.5);
+  --c-peach-border: rgba(232, 181, 162, 0.55);
+  --c-vanilla-border: rgba(235, 217, 179, 0.65);
+  --c-sage-border: rgba(188, 212, 165, 0.6);
+  --c-seafoam-border: rgba(163, 199, 187, 0.6);
+
+  /* Background canvas & glass panel */
+  --bg-primary: #fbf9f5;
+  --bg-gradient-mesh: radial-gradient(at 5% 5%, rgba(209, 153, 153, 0.24) 0px, transparent 45%),
+                      radial-gradient(at 95% 5%, rgba(163, 199, 187, 0.28) 0px, transparent 45%),
+                      radial-gradient(at 50% 95%, rgba(188, 212, 165, 0.24) 0px, transparent 50%),
+                      radial-gradient(at 90% 90%, rgba(232, 181, 162, 0.26) 0px, transparent 45%),
+                      radial-gradient(at 10% 90%, rgba(235, 217, 179, 0.35) 0px, transparent 45%);
+
+  --bg-card: rgba(255, 255, 255, 0.90);
+  --bg-card-solid: #ffffff;
+  --border-color: rgba(214, 211, 209, 0.65);
+  --border-color-strong: rgba(168, 162, 158, 0.6);
+
+  /* Warm Charcoal Typography */
+  --text-primary: #292524; /* Stone 800 */
+  --text-secondary: #57534e; /* Stone 600 */
+  --text-muted: #78716c; /* Stone 500 */
+  --text-light: #a8a29e; /* Stone 400 */
+
+  /* Soft Ambient Shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(41, 37, 36, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(41, 37, 36, 0.08), 0 2px 6px -1px rgba(41, 37, 36, 0.04);
+  --shadow-lg: 0 10px 25px -4px rgba(41, 37, 36, 0.08), 0 4px 10px -2px rgba(41, 37, 36, 0.04);
+  --shadow-xl: 0 20px 30px -8px rgba(41, 37, 36, 0.12), 0 8px 16px -4px rgba(41, 37, 36, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  background-image: var(--bg-gradient-mesh);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(245, 240, 235, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-seafoam);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #89b3a5;
+}
+
+/* Animations */
+@keyframes pulse-subtle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.92); opacity: 0; }
+  70% { transform: scale(1.03); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0px) scale(0.8); opacity: 1; }
+  100% { transform: translateY(-75px) scale(1.4); opacity: 0; }
+}
+
+.animate-pop {
+  animation: popIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.floating-reaction {
+  position: absolute;
+  pointer-events: none;
+  animation: floatUp 1.8s ease-out forwards;
+  font-size: 2.2rem;
+  z-index: 50;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.08));
+}
+
+/* Card glassmorphism with light warm finish */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+}
+
+.glass-panel-subtle {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+}
+
+input, select {
+  font-family: inherit;
+  outline: none;
+}

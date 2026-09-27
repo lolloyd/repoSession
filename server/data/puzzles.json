@@ -1,0 +1,1567 @@
+[
+  {
+    "id": 1,
+    "answer": "Forget it",
+    "acceptable": [
+      "forget it",
+      "forget-it"
+    ],
+    "hint": "Don't remember it; dismiss an issue",
+    "category": "Common Phrase",
+    "image": "/puzzles/puzzle_1.webp",
+    "letter_pattern": "______ __",
+    "word_lengths": [
+      6,
+      2
+    ]
+  },
+  {
+    "id": 2,
+    "answer": "Try to understand",
+    "acceptable": [
+      "try to understand",
+      "attempt to understand"
+    ],
+    "hint": "Make an effort to comprehend",
+    "category": "Idiom",
+    "image": "/puzzles/puzzle_2.webp",
+    "letter_pattern": "___ __ __________",
+    "word_lengths": [
+      3,
+      2,
+      10
+    ]
+  },
+  {
+    "id": 3,
+    "answer": "Travel overseas",
+    "acceptable": [
+      "travel overseas",
+      "overseas travel",
+      "travel over seas"
+    ],
+    "hint": "Journey across international waters",
+    "category": "Travel",
+    "image": "/puzzles/puzzle_3.webp",
+    "letter_pattern": "______ ________",
+    "word_lengths": [
+      6,
+      8
+    ]
+  },
+  {
+    "id": 4,
+    "answer": "Downtown",
+    "acceptable": [
+      "downtown",
+      "down town"
+    ],
+    "hint": "The central commercial district",
+    "category": "Places",
+    "image": "/puzzles/puzzle_4.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 5,
+    "answer": "Eyeshadow",
+    "acceptable": [
+      "eyeshadow",
+      "eye shadow"
+    ],
+    "hint": "Cosmetic applied to the eyelids",
+    "category": "Beauty",
+    "image": "/puzzles/puzzle_5.webp",
+    "letter_pattern": "_________",
+    "word_lengths": [
+      9
+    ]
+  },
+  {
+    "id": 6,
+    "answer": "Stepfather",
+    "acceptable": [
+      "stepfather",
+      "step father"
+    ],
+    "hint": "Parent by marriage, not biology",
+    "category": "Family",
+    "image": "/puzzles/puzzle_6.webp",
+    "letter_pattern": "__________",
+    "word_lengths": [
+      10
+    ]
+  },
+  {
+    "id": 7,
+    "answer": "Potatoes",
+    "acceptable": [
+      "potatoes",
+      "potato",
+      "pot 8 os",
+      "pot eight os"
+    ],
+    "hint": "Starchy root vegetables (spuds)",
+    "category": "Food",
+    "image": "/puzzles/puzzle_7.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 8,
+    "answer": "3D movie",
+    "acceptable": [
+      "3d movie",
+      "three d movie",
+      "3-d movie",
+      "3d film"
+    ],
+    "hint": "Motion picture viewed with special glasses",
+    "category": "Entertainment",
+    "image": "/puzzles/puzzle_8.webp",
+    "letter_pattern": "__ _____",
+    "word_lengths": [
+      2,
+      5
+    ]
+  },
+  {
+    "id": 9,
+    "answer": "Top secret",
+    "acceptable": [
+      "top secret"
+    ],
+    "hint": "Highest level of classified information",
+    "category": "Espionage",
+    "image": "/puzzles/puzzle_9.webp",
+    "letter_pattern": "___ ______",
+    "word_lengths": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": 10,
+    "answer": "Lemonade",
+    "acceptable": [
+      "lemonade",
+      "lemon ade"
+    ],
+    "hint": "Sweet and tart citrus summer drink",
+    "category": "Beverage",
+    "image": "/puzzles/puzzle_10.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 11,
+    "answer": "Long legs",
+    "acceptable": [
+      "long legs"
+    ],
+    "hint": "Elongated limbs",
+    "category": "Anatomy",
+    "image": "/puzzles/puzzle_11.webp",
+    "letter_pattern": "____ ____",
+    "word_lengths": [
+      4,
+      4
+    ]
+  },
+  {
+    "id": 12,
+    "answer": "Big bad wolf",
+    "acceptable": [
+      "big bad wolf",
+      "the big bad wolf"
+    ],
+    "hint": "Fairy tale villain that huffed and puffed",
+    "category": "Fairy Tale",
+    "image": "/puzzles/puzzle_12.webp",
+    "letter_pattern": "___ ___ ____",
+    "word_lengths": [
+      3,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 13,
+    "answer": "Many thanks",
+    "acceptable": [
+      "many thanks",
+      "thanks a lot",
+      "thank you very much",
+      "thanks thanks"
+    ],
+    "hint": "Abundant gratitude",
+    "category": "Courtesies",
+    "image": "/puzzles/puzzle_13.webp",
+    "letter_pattern": "____ ______",
+    "word_lengths": [
+      4,
+      6
+    ]
+  },
+  {
+    "id": 14,
+    "answer": "Download",
+    "acceptable": [
+      "download",
+      "down load"
+    ],
+    "hint": "Transfer data from the cloud or web to your device",
+    "category": "Technology",
+    "image": "/puzzles/puzzle_14.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 15,
+    "answer": "Spaceman",
+    "acceptable": [
+      "spaceman",
+      "space man",
+      "astronaut"
+    ],
+    "hint": "Traveler beyond Earth's atmosphere",
+    "category": "Space",
+    "image": "/puzzles/puzzle_15.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 16,
+    "answer": "No idea",
+    "acceptable": [
+      "no idea",
+      "no clue",
+      "have no idea"
+    ],
+    "hint": "Complete lack of knowledge on a topic",
+    "category": "Expression",
+    "image": "/puzzles/puzzle_16.webp",
+    "letter_pattern": "__ ____",
+    "word_lengths": [
+      2,
+      4
+    ]
+  },
+  {
+    "id": 17,
+    "answer": "Comfortable",
+    "acceptable": [
+      "comfortable",
+      "comfy"
+    ],
+    "hint": "Providing physical ease and relaxation",
+    "category": "Adjective",
+    "image": "/puzzles/puzzle_17.webp",
+    "letter_pattern": "___________",
+    "word_lengths": [
+      11
+    ]
+  },
+  {
+    "id": 18,
+    "answer": "Forty years",
+    "acceptable": [
+      "forty years",
+      "40 years"
+    ],
+    "hint": "Four decades of time",
+    "category": "Time",
+    "image": "/puzzles/puzzle_18.webp",
+    "letter_pattern": "_____ _____",
+    "word_lengths": [
+      5,
+      5
+    ]
+  },
+  {
+    "id": 19,
+    "answer": "Excuse me",
+    "acceptable": [
+      "excuse me",
+      "pardon me"
+    ],
+    "hint": "Polite phrase used to get past or get attention",
+    "category": "Courtesies",
+    "image": "/puzzles/puzzle_19.webp",
+    "letter_pattern": "______ __",
+    "word_lengths": [
+      6,
+      2
+    ]
+  },
+  {
+    "id": 20,
+    "answer": "Forehead",
+    "acceptable": [
+      "forehead",
+      "fore head"
+    ],
+    "hint": "Facial area between the eyebrows and hairline",
+    "category": "Anatomy",
+    "image": "/puzzles/puzzle_20.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 21,
+    "answer": "Good looking",
+    "acceptable": [
+      "good looking",
+      "good-looking",
+      "handsome",
+      "attractive"
+    ],
+    "hint": "Visually appealing or handsome",
+    "category": "Descriptive",
+    "image": "/puzzles/puzzle_21.webp",
+    "letter_pattern": "____ _______",
+    "word_lengths": [
+      4,
+      7
+    ]
+  },
+  {
+    "id": 22,
+    "answer": "Waterfall",
+    "acceptable": [
+      "waterfall",
+      "water fall",
+      "cascade"
+    ],
+    "hint": "Cascade of river water plunging over a steep drop",
+    "category": "Nature",
+    "image": "/puzzles/puzzle_22.webp",
+    "letter_pattern": "_________",
+    "word_lengths": [
+      9
+    ]
+  },
+  {
+    "id": 23,
+    "answer": "Wake up",
+    "acceptable": [
+      "wake up",
+      "awake"
+    ],
+    "hint": "Cease sleeping; rise and shine",
+    "category": "Daily Routine",
+    "image": "/puzzles/puzzle_23.webp",
+    "letter_pattern": "____ __",
+    "word_lengths": [
+      4,
+      2
+    ]
+  },
+  {
+    "id": 24,
+    "answer": "Tuna fish",
+    "acceptable": [
+      "tuna fish",
+      "tuna"
+    ],
+    "hint": "Popular canned saltwater fish",
+    "category": "Food",
+    "image": "/puzzles/puzzle_24.webp",
+    "letter_pattern": "____ ____",
+    "word_lengths": [
+      4,
+      4
+    ]
+  },
+  {
+    "id": 25,
+    "answer": "Foreign language",
+    "acceptable": [
+      "foreign language",
+      "second language"
+    ],
+    "hint": "Speech native to another country",
+    "category": "Communication",
+    "image": "/puzzles/puzzle_25.webp",
+    "letter_pattern": "_______ ________",
+    "word_lengths": [
+      7,
+      8
+    ]
+  },
+  {
+    "id": 26,
+    "answer": "Middle-aged",
+    "acceptable": [
+      "middle-aged",
+      "middle aged"
+    ],
+    "hint": "Neither young nor old, roughly 45-65",
+    "category": "Life Stages",
+    "image": "/puzzles/puzzle_26.webp",
+    "letter_pattern": "______ ____",
+    "word_lengths": [
+      6,
+      4
+    ]
+  },
+  {
+    "id": 27,
+    "answer": "Broken heart",
+    "acceptable": [
+      "broken heart",
+      "heartbreak",
+      "heart broken"
+    ],
+    "hint": "Overwhelming grief from lost love",
+    "category": "Emotion",
+    "image": "/puzzles/puzzle_27.webp",
+    "letter_pattern": "______ _____",
+    "word_lengths": [
+      6,
+      5
+    ]
+  },
+  {
+    "id": 28,
+    "answer": "Seesaw",
+    "acceptable": [
+      "seesaw",
+      "see-saw",
+      "teeter totter",
+      "teeter-totter"
+    ],
+    "hint": "Playground equipment that rocks up and down",
+    "category": "Playground",
+    "image": "/puzzles/puzzle_28.webp",
+    "letter_pattern": "______",
+    "word_lengths": [
+      6
+    ]
+  },
+  {
+    "id": 29,
+    "answer": "Miss you",
+    "acceptable": [
+      "miss you",
+      "missing you"
+    ],
+    "hint": "Longing for someone absent",
+    "category": "Emotion",
+    "image": "/puzzles/puzzle_29.webp",
+    "letter_pattern": "____ ___",
+    "word_lengths": [
+      4,
+      3
+    ]
+  },
+  {
+    "id": 30,
+    "answer": "Teabag",
+    "acceptable": [
+      "teabag",
+      "tea bag"
+    ],
+    "hint": "Small porous pouch for brewing hot drinks",
+    "category": "Beverage",
+    "image": "/puzzles/puzzle_30.webp",
+    "letter_pattern": "______",
+    "word_lengths": [
+      6
+    ]
+  },
+  {
+    "id": 31,
+    "answer": "Four-wheel drive",
+    "acceptable": [
+      "four-wheel drive",
+      "four wheel drive",
+      "4-wheel drive",
+      "4wd",
+      "4x4"
+    ],
+    "hint": "Vehicle system sending power to all wheels",
+    "category": "Automotive",
+    "image": "/puzzles/puzzle_31.webp",
+    "letter_pattern": "____ _____ _____",
+    "word_lengths": [
+      4,
+      5,
+      5
+    ]
+  },
+  {
+    "id": 32,
+    "answer": "Apple pie",
+    "acceptable": [
+      "apple pie"
+    ],
+    "hint": "Traditional American baked pastry dessert",
+    "category": "Food",
+    "image": "/puzzles/puzzle_32.webp",
+    "letter_pattern": "_____ ___",
+    "word_lengths": [
+      5,
+      3
+    ]
+  },
+  {
+    "id": 33,
+    "answer": "Up to you",
+    "acceptable": [
+      "up to you",
+      "its up to you",
+      "it's up to you"
+    ],
+    "hint": "Entirely your decision",
+    "category": "Common Phrase",
+    "image": "/puzzles/puzzle_33.webp",
+    "letter_pattern": "__ __ ___",
+    "word_lengths": [
+      2,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 34,
+    "answer": "Robin Hood",
+    "acceptable": [
+      "robin hood"
+    ],
+    "hint": "Heroic archer who steals from the rich",
+    "category": "Folk Legend",
+    "image": "/puzzles/puzzle_34.webp",
+    "letter_pattern": "_____ ____",
+    "word_lengths": [
+      5,
+      4
+    ]
+  },
+  {
+    "id": 35,
+    "answer": "Engineer",
+    "acceptable": [
+      "engineer"
+    ],
+    "hint": "Professional who designs engines or machines",
+    "category": "Careers",
+    "image": "/puzzles/puzzle_35.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 36,
+    "answer": "Vegetables",
+    "acceptable": [
+      "vegetables",
+      "vegetable",
+      "veggies"
+    ],
+    "hint": "Carrots, broccoli, spinach, and celery",
+    "category": "Food",
+    "image": "/puzzles/puzzle_36.webp",
+    "letter_pattern": "__________",
+    "word_lengths": [
+      10
+    ]
+  },
+  {
+    "id": 37,
+    "answer": "Afternoon tea",
+    "acceptable": [
+      "afternoon tea",
+      "high tea"
+    ],
+    "hint": "British tradition of tea and scones around 4 PM",
+    "category": "Culture",
+    "image": "/puzzles/puzzle_37.webp",
+    "letter_pattern": "_________ ___",
+    "word_lengths": [
+      9,
+      3
+    ]
+  },
+  {
+    "id": 38,
+    "answer": "Camping overnight",
+    "acceptable": [
+      "camping overnight",
+      "camp overnight",
+      "overnight camping"
+    ],
+    "hint": "Sleeping in the woods under a tent",
+    "category": "Outdoors",
+    "image": "/puzzles/puzzle_38.webp",
+    "letter_pattern": "_______ _________",
+    "word_lengths": [
+      7,
+      9
+    ]
+  },
+  {
+    "id": 39,
+    "answer": "Broken heart",
+    "acceptable": [
+      "broken heart",
+      "heartbreak"
+    ],
+    "hint": "Emotional sadness caused by heartbreak",
+    "category": "Emotion",
+    "image": "/puzzles/puzzle_39.webp",
+    "letter_pattern": "______ _____",
+    "word_lengths": [
+      6,
+      5
+    ]
+  },
+  {
+    "id": 40,
+    "answer": "Time to go",
+    "acceptable": [
+      "time to go",
+      "it's time to go",
+      "its time to go"
+    ],
+    "hint": "Moment to pack up and leave",
+    "category": "Common Phrase",
+    "image": "/puzzles/puzzle_40.webp",
+    "letter_pattern": "____ __ __",
+    "word_lengths": [
+      4,
+      2,
+      2
+    ]
+  },
+  {
+    "id": 41,
+    "answer": "Long time no see",
+    "acceptable": [
+      "long time no see"
+    ],
+    "hint": "Greeting between friends who haven't met in ages",
+    "category": "Greeting",
+    "image": "/puzzles/puzzle_41.webp",
+    "letter_pattern": "____ ____ __ ___",
+    "word_lengths": [
+      4,
+      4,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 42,
+    "answer": "Polite",
+    "acceptable": [
+      "polite",
+      "courteous",
+      "mannerly"
+    ],
+    "hint": "Displaying good manners and respect",
+    "category": "Adjective",
+    "image": "/puzzles/puzzle_42.webp",
+    "letter_pattern": "______",
+    "word_lengths": [
+      6
+    ]
+  },
+  {
+    "id": 43,
+    "answer": "Touchdown",
+    "acceptable": [
+      "touchdown",
+      "touch down"
+    ],
+    "hint": "Six-point score across the goal line",
+    "category": "Sports",
+    "image": "/puzzles/puzzle_43.webp",
+    "letter_pattern": "_________",
+    "word_lengths": [
+      9
+    ]
+  },
+  {
+    "id": 44,
+    "answer": "Honeybee",
+    "acceptable": [
+      "honeybee",
+      "honey bee"
+    ],
+    "hint": "Striped insect producing golden nectar",
+    "category": "Animals",
+    "image": "/puzzles/puzzle_44.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 45,
+    "answer": "Cornerstone",
+    "acceptable": [
+      "cornerstone",
+      "corner stone"
+    ],
+    "hint": "First stone set in the construction of masonry",
+    "category": "Architecture",
+    "image": "/puzzles/puzzle_45.webp",
+    "letter_pattern": "___________",
+    "word_lengths": [
+      11
+    ]
+  },
+  {
+    "id": 46,
+    "answer": "Love at first sight",
+    "acceptable": [
+      "love at first sight"
+    ],
+    "hint": "Immediate intense attraction upon first meeting",
+    "category": "Romance",
+    "image": "/puzzles/puzzle_46.webp",
+    "letter_pattern": "____ __ _____ _____",
+    "word_lengths": [
+      4,
+      2,
+      5,
+      5
+    ]
+  },
+  {
+    "id": 47,
+    "answer": "Catwalk",
+    "acceptable": [
+      "catwalk",
+      "cat walk",
+      "runway"
+    ],
+    "hint": "Narrow platform for runway fashion shows",
+    "category": "Fashion",
+    "image": "/puzzles/puzzle_47.webp",
+    "letter_pattern": "_______",
+    "word_lengths": [
+      7
+    ]
+  },
+  {
+    "id": 48,
+    "answer": "Hiking in the woods",
+    "acceptable": [
+      "hiking in the woods",
+      "hike in the woods",
+      "king in the woods",
+      "a king in the woods"
+    ],
+    "hint": "Walking on trails surrounded by trees",
+    "category": "Outdoors",
+    "image": "/puzzles/puzzle_48.webp",
+    "letter_pattern": "______ __ ___ _____",
+    "word_lengths": [
+      6,
+      2,
+      3,
+      5
+    ]
+  },
+  {
+    "id": 49,
+    "answer": "Sandbox",
+    "acceptable": [
+      "sandbox",
+      "sand box"
+    ],
+    "hint": "Enclosure containing sand for children to dig in",
+    "category": "Playground",
+    "image": "/puzzles/puzzle_49.webp",
+    "letter_pattern": "_______",
+    "word_lengths": [
+      7
+    ]
+  },
+  {
+    "id": 50,
+    "answer": "Lovebirds",
+    "acceptable": [
+      "lovebirds",
+      "love birds"
+    ],
+    "hint": "Affectionate pair or small African parrots",
+    "category": "Romance",
+    "image": "/puzzles/puzzle_50.webp",
+    "letter_pattern": "_________",
+    "word_lengths": [
+      9
+    ]
+  },
+  {
+    "id": 51,
+    "answer": "Crossbow",
+    "acceptable": [
+      "crossbow",
+      "cross bow"
+    ],
+    "hint": "Weapon composed of a bow mounted transversely on a stock",
+    "category": "Weapons",
+    "image": "/puzzles/puzzle_51.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 52,
+    "answer": "Eggs over easy",
+    "acceptable": [
+      "eggs over easy",
+      "over easy",
+      "egg over easy"
+    ],
+    "hint": "Fried egg flipped briefly so the yolk stays runny",
+    "category": "Breakfast",
+    "image": "/puzzles/puzzle_52.webp",
+    "letter_pattern": "____ ____ ____",
+    "word_lengths": [
+      4,
+      4,
+      4
+    ]
+  },
+  {
+    "id": 53,
+    "answer": "Multiple choice",
+    "acceptable": [
+      "multiple choice",
+      "multiple-choice"
+    ],
+    "hint": "Exam format with several options to choose from",
+    "category": "Education",
+    "image": "/puzzles/puzzle_53.webp",
+    "letter_pattern": "________ ______",
+    "word_lengths": [
+      8,
+      6
+    ]
+  },
+  {
+    "id": 54,
+    "answer": "Come into season",
+    "acceptable": [
+      "come into season",
+      "coming into season"
+    ],
+    "hint": "When fruits or vegetables are ready for harvest",
+    "category": "Agriculture",
+    "image": "/puzzles/puzzle_54.webp",
+    "letter_pattern": "____ ____ ______",
+    "word_lengths": [
+      4,
+      4,
+      6
+    ]
+  },
+  {
+    "id": 55,
+    "answer": "I'll get over it",
+    "acceptable": [
+      "i'll get over it",
+      "ill get over it",
+      "i will get over it"
+    ],
+    "hint": "I'll recover and move past the setback",
+    "category": "Idiom",
+    "image": "/puzzles/puzzle_55.webp",
+    "letter_pattern": "____ ___ ____ __",
+    "word_lengths": [
+      4,
+      3,
+      4,
+      2
+    ]
+  },
+  {
+    "id": 56,
+    "answer": "I'm bigger than you",
+    "acceptable": [
+      "i'm bigger than you",
+      "im bigger than you",
+      "i am bigger than you"
+    ],
+    "hint": "Boasting about larger physical size",
+    "category": "Expression",
+    "image": "/puzzles/puzzle_56.webp",
+    "letter_pattern": "___ ______ ____ ___",
+    "word_lengths": [
+      3,
+      6,
+      4,
+      3
+    ]
+  },
+  {
+    "id": 57,
+    "answer": "Illegal",
+    "acceptable": [
+      "illegal",
+      "unlawful",
+      "ill eagle"
+    ],
+    "hint": "Forbidden by law or rules",
+    "category": "Law",
+    "image": "/puzzles/puzzle_57.webp",
+    "letter_pattern": "_______",
+    "word_lengths": [
+      7
+    ]
+  },
+  {
+    "id": 58,
+    "answer": "Double agent",
+    "acceptable": [
+      "double agent",
+      "double-agent",
+      "mole"
+    ],
+    "hint": "Spy who pretends to act for one government while serving another",
+    "category": "Espionage",
+    "image": "/puzzles/puzzle_58.webp",
+    "letter_pattern": "______ _____",
+    "word_lengths": [
+      6,
+      5
+    ]
+  },
+  {
+    "id": 59,
+    "answer": "Rock n roll",
+    "acceptable": [
+      "rock n roll",
+      "rock and roll",
+      "rock 'n' roll",
+      "rock & roll"
+    ],
+    "hint": "Energetic music genre with electric guitars and drums",
+    "category": "Music",
+    "image": "/puzzles/puzzle_59.webp",
+    "letter_pattern": "____ _ ____",
+    "word_lengths": [
+      4,
+      1,
+      4
+    ]
+  },
+  {
+    "id": 60,
+    "answer": "Good afternoon",
+    "acceptable": [
+      "good afternoon"
+    ],
+    "hint": "Polite greeting spoken after 12 noon",
+    "category": "Greeting",
+    "image": "/puzzles/puzzle_60.webp",
+    "letter_pattern": "____ _________",
+    "word_lengths": [
+      4,
+      9
+    ]
+  },
+  {
+    "id": 61,
+    "answer": "Look me in the eye",
+    "acceptable": [
+      "look me in the eye",
+      "look me in the eyes"
+    ],
+    "hint": "Make direct eye contact to show honesty",
+    "category": "Idiom",
+    "image": "/puzzles/puzzle_61.webp",
+    "letter_pattern": "____ __ __ ___ ___",
+    "word_lengths": [
+      4,
+      2,
+      2,
+      3,
+      3
+    ]
+  },
+  {
+    "id": 62,
+    "answer": "Electric blanket",
+    "acceptable": [
+      "electric blanket"
+    ],
+    "hint": "Bed covering with integrated heating elements",
+    "category": "Household",
+    "image": "/puzzles/puzzle_62.webp",
+    "letter_pattern": "________ _______",
+    "word_lengths": [
+      8,
+      7
+    ]
+  },
+  {
+    "id": 63,
+    "answer": "Banknote",
+    "acceptable": [
+      "banknote",
+      "bank note",
+      "paper money",
+      "currency note"
+    ],
+    "hint": "Promissory paper note issued by a central bank",
+    "category": "Finance",
+    "image": "/puzzles/puzzle_63.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 64,
+    "answer": "Bookcase",
+    "acceptable": [
+      "bookcase",
+      "book case",
+      "bookshelf"
+    ],
+    "hint": "Piece of furniture with shelves to hold novels",
+    "category": "Furniture",
+    "image": "/puzzles/puzzle_64.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 65,
+    "answer": "Five kilograms overweight",
+    "acceptable": [
+      "five kilograms overweight",
+      "5kg overweight",
+      "5 kilograms overweight",
+      "five kg overweight"
+    ],
+    "hint": "Carrying 11 extra pounds on the scale",
+    "category": "Measurement",
+    "image": "/puzzles/puzzle_65.webp",
+    "letter_pattern": "____ _________ __________",
+    "word_lengths": [
+      4,
+      9,
+      10
+    ]
+  },
+  {
+    "id": 66,
+    "answer": "Highway",
+    "acceptable": [
+      "highway",
+      "high way",
+      "freeway",
+      "expressway"
+    ],
+    "hint": "Public road for fast vehicle travel between towns",
+    "category": "Transportation",
+    "image": "/puzzles/puzzle_66.webp",
+    "letter_pattern": "_______",
+    "word_lengths": [
+      7
+    ]
+  },
+  {
+    "id": 67,
+    "answer": "Way to go",
+    "acceptable": [
+      "way to go",
+      "way-to-go"
+    ],
+    "hint": "Cheering phrase meaning 'Well done!'",
+    "category": "Expression",
+    "image": "/puzzles/puzzle_67.webp",
+    "letter_pattern": "___ __ __",
+    "word_lengths": [
+      3,
+      2,
+      2
+    ]
+  },
+  {
+    "id": 68,
+    "answer": "Sunroof",
+    "acceptable": [
+      "sunroof",
+      "sun roof",
+      "moonroof"
+    ],
+    "hint": "Operable panel in an automobile roof",
+    "category": "Automotive",
+    "image": "/puzzles/puzzle_68.webp",
+    "letter_pattern": "_______",
+    "word_lengths": [
+      7
+    ]
+  },
+  {
+    "id": 69,
+    "answer": "Pardon me",
+    "acceptable": [
+      "pardon me",
+      "excuse me"
+    ],
+    "hint": "Polite formula when interrupting or apologizing",
+    "category": "Courtesies",
+    "image": "/puzzles/puzzle_69.webp",
+    "letter_pattern": "______ __",
+    "word_lengths": [
+      6,
+      2
+    ]
+  },
+  {
+    "id": 70,
+    "answer": "Turnip",
+    "acceptable": [
+      "turnip",
+      "turn up",
+      "turn-ip"
+    ],
+    "hint": "Round white and purple root vegetable",
+    "category": "Food",
+    "image": "/puzzles/puzzle_70.webp",
+    "letter_pattern": "______",
+    "word_lengths": [
+      6
+    ]
+  },
+  {
+    "id": 71,
+    "answer": "Uproar",
+    "acceptable": [
+      "uproar",
+      "up roar",
+      "commotion"
+    ],
+    "hint": "State of violent agitation, noise, and excitement",
+    "category": "Emotion",
+    "image": "/puzzles/puzzle_71.webp",
+    "letter_pattern": "______",
+    "word_lengths": [
+      6
+    ]
+  },
+  {
+    "id": 72,
+    "answer": "Thunderstorm",
+    "acceptable": [
+      "thunderstorm",
+      "thunder storm"
+    ],
+    "hint": "Weather event with lightning and thunder",
+    "category": "Weather",
+    "image": "/puzzles/puzzle_72.webp",
+    "letter_pattern": "____________",
+    "word_lengths": [
+      12
+    ]
+  },
+  {
+    "id": 73,
+    "answer": "Microscope",
+    "acceptable": [
+      "microscope",
+      "micro scope"
+    ],
+    "hint": "Optical device used in science labs to view cells",
+    "category": "Science",
+    "image": "/puzzles/puzzle_73.webp",
+    "letter_pattern": "__________",
+    "word_lengths": [
+      10
+    ]
+  },
+  {
+    "id": 74,
+    "answer": "Headquarters",
+    "acceptable": [
+      "headquarters",
+      "head quarters",
+      "hq"
+    ],
+    "hint": "Administrative center of an enterprise",
+    "category": "Business",
+    "image": "/puzzles/puzzle_74.webp",
+    "letter_pattern": "____________",
+    "word_lengths": [
+      12
+    ]
+  },
+  {
+    "id": 75,
+    "answer": "Blanket",
+    "acceptable": [
+      "blanket",
+      "blank et"
+    ],
+    "hint": "Large piece of woolen or woven fabric on a bed",
+    "category": "Household",
+    "image": "/puzzles/puzzle_75.webp",
+    "letter_pattern": "_______",
+    "word_lengths": [
+      7
+    ]
+  },
+  {
+    "id": 76,
+    "answer": "Cut corners",
+    "acceptable": [
+      "cut corners",
+      "cutting corners"
+    ],
+    "hint": "Doing something perfunctorily to save money or effort",
+    "category": "Idiom",
+    "image": "/puzzles/puzzle_76.webp",
+    "letter_pattern": "___ _______",
+    "word_lengths": [
+      3,
+      7
+    ]
+  },
+  {
+    "id": 77,
+    "answer": "Cocktail",
+    "acceptable": [
+      "cocktail",
+      "cock tail"
+    ],
+    "hint": "Mixed alcoholic beverage served at happy hour",
+    "category": "Beverage",
+    "image": "/puzzles/puzzle_77.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 78,
+    "answer": "Tennis shoes",
+    "acceptable": [
+      "tennis shoes",
+      "sneakers",
+      "running shoes"
+    ],
+    "hint": "Rubber-soled athletic footwear",
+    "category": "Clothing",
+    "image": "/puzzles/puzzle_78.webp",
+    "letter_pattern": "______ _____",
+    "word_lengths": [
+      6,
+      5
+    ]
+  },
+  {
+    "id": 79,
+    "answer": "Summary",
+    "acceptable": [
+      "summary",
+      "sum mary",
+      "recap"
+    ],
+    "hint": "Comprehensive and concise recapitulation",
+    "category": "Education",
+    "image": "/puzzles/puzzle_79.webp",
+    "letter_pattern": "_______",
+    "word_lengths": [
+      7
+    ]
+  },
+  {
+    "id": 80,
+    "answer": "Foul language",
+    "acceptable": [
+      "foul language",
+      "fowl language",
+      "profanity"
+    ],
+    "hint": "Swearing or using objectionable words",
+    "category": "Communication",
+    "image": "/puzzles/puzzle_80.webp",
+    "letter_pattern": "____ ________",
+    "word_lengths": [
+      4,
+      8
+    ]
+  },
+  {
+    "id": 81,
+    "answer": "Summer",
+    "acceptable": [
+      "summer",
+      "sum r"
+    ],
+    "hint": "The warmest season between spring and autumn",
+    "category": "Seasons",
+    "image": "/puzzles/puzzle_81.webp",
+    "letter_pattern": "______",
+    "word_lengths": [
+      6
+    ]
+  },
+  {
+    "id": 82,
+    "answer": "Mutate",
+    "acceptable": [
+      "mutate",
+      "mute eight",
+      "mute 8"
+    ],
+    "hint": "Change in form or genetic structure",
+    "category": "Biology",
+    "image": "/puzzles/puzzle_82.webp",
+    "letter_pattern": "______",
+    "word_lengths": [
+      6
+    ]
+  },
+  {
+    "id": 83,
+    "answer": "Indian food",
+    "acceptable": [
+      "indian food",
+      "in food"
+    ],
+    "hint": "Spicy dishes like tikka masala, biryani, and naan",
+    "category": "Food",
+    "image": "/puzzles/puzzle_83.webp",
+    "letter_pattern": "______ ____",
+    "word_lengths": [
+      6,
+      4
+    ]
+  },
+  {
+    "id": 84,
+    "answer": "The underdog",
+    "acceptable": [
+      "the underdog",
+      "underdog",
+      "under dog"
+    ],
+    "hint": "Competitor thought to have little chance of winning",
+    "category": "Sports",
+    "image": "/puzzles/puzzle_84.webp",
+    "letter_pattern": "___ ________",
+    "word_lengths": [
+      3,
+      8
+    ]
+  },
+  {
+    "id": 85,
+    "answer": "Seasoning",
+    "acceptable": [
+      "seasoning",
+      "season in g"
+    ],
+    "hint": "Salt, pepper, or herbs used to improve flavor",
+    "category": "Culinary",
+    "image": "/puzzles/puzzle_85.webp",
+    "letter_pattern": "_________",
+    "word_lengths": [
+      9
+    ]
+  },
+  {
+    "id": 86,
+    "answer": "Easel",
+    "acceptable": [
+      "easel",
+      "es l"
+    ],
+    "hint": "Upright wooden tripod stand for an artist's canvas",
+    "category": "Art",
+    "image": "/puzzles/puzzle_86.webp",
+    "letter_pattern": "_____",
+    "word_lengths": [
+      5
+    ]
+  },
+  {
+    "id": 87,
+    "answer": "Discount",
+    "acceptable": [
+      "discount",
+      "dis count"
+    ],
+    "hint": "Deduction from the regular price",
+    "category": "Shopping",
+    "image": "/puzzles/puzzle_87.webp",
+    "letter_pattern": "________",
+    "word_lengths": [
+      8
+    ]
+  },
+  {
+    "id": 88,
+    "answer": "Keep your eyes on the ball",
+    "acceptable": [
+      "keep your eyes on the ball",
+      "keep your eye on the ball",
+      "eyes on the ball"
+    ],
+    "hint": "Stay focused and alert to what is happening",
+    "category": "Idiom",
+    "image": "/puzzles/puzzle_88.webp",
+    "letter_pattern": "____ ____ ____ __ ___ ____",
+    "word_lengths": [
+      4,
+      4,
+      4,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 89,
+    "answer": "Fortunate",
+    "acceptable": [
+      "fortunate",
+      "four tuna eight"
+    ],
+    "hint": "Favored by good luck; prosperous",
+    "category": "Adjective",
+    "image": "/puzzles/puzzle_89.webp",
+    "letter_pattern": "_________",
+    "word_lengths": [
+      9
+    ]
+  },
+  {
+    "id": 90,
+    "answer": "Tripod",
+    "acceptable": [
+      "tripod",
+      "tri pod"
+    ],
+    "hint": "Three-legged stand for supporting a camera",
+    "category": "Photography",
+    "image": "/puzzles/puzzle_90.webp",
+    "letter_pattern": "______",
+    "word_lengths": [
+      6
+    ]
+  },
+  {
+    "id": 91,
+    "answer": "Sweet tooth",
+    "acceptable": [
+      "sweet tooth"
+    ],
+    "hint": "A great liking for candy and confectionery",
+    "category": "Idiom",
+    "image": "/puzzles/puzzle_91.webp",
+    "letter_pattern": "_____ _____",
+    "word_lengths": [
+      5,
+      5
+    ]
+  },
+  {
+    "id": 92,
+    "answer": "A bone to pick",
+    "acceptable": [
+      "a bone to pick",
+      "bone to pick"
+    ],
+    "hint": "A matter or dispute to discuss and settle",
+    "category": "Idiom",
+    "image": "/puzzles/puzzle_92.webp",
+    "letter_pattern": "_ ____ __ ____",
+    "word_lengths": [
+      1,
+      4,
+      2,
+      4
+    ]
+  },
+  {
+    "id": 93,
+    "answer": "Fingers crossed",
+    "acceptable": [
+      "fingers crossed",
+      "keep fingers crossed",
+      "finger crossed"
+    ],
+    "hint": "Gesture expressing hope for good luck",
+    "category": "Expression",
+    "image": "/puzzles/puzzle_93.webp",
+    "letter_pattern": "_______ _______",
+    "word_lengths": [
+      7,
+      7
+    ]
+  },
+  {
+    "id": 94,
+    "answer": "Sixth sense",
+    "acceptable": [
+      "sixth sense",
+      "6th sense"
+    ],
+    "hint": "Perception beyond the five physical senses (ESP)",
+    "category": "Mystery",
+    "image": "/puzzles/puzzle_94.webp",
+    "letter_pattern": "_____ _____",
+    "word_lengths": [
+      5,
+      5
+    ]
+  },
+  {
+    "id": 95,
+    "answer": "On second thought",
+    "acceptable": [
+      "on second thought",
+      "on second thoughts"
+    ],
+    "hint": "Changing one's mind after further reflection",
+    "category": "Idiom",
+    "image": "/puzzles/puzzle_95.webp",
+    "letter_pattern": "__ ______ _______",
+    "word_lengths": [
+      2,
+      6,
+      7
+    ]
+  },
+  {
+    "id": 96,
+    "answer": "Sleep on it",
+    "acceptable": [
+      "sleep on it"
+    ],
+    "hint": "Delay making a major decision until the next morning",
+    "category": "Idiom",
+    "image": "/puzzles/puzzle_96.webp",
+    "letter_pattern": "_____ __ __",
+    "word_lengths": [
+      5,
+      2,
+      2
+    ]
+  }
+]
