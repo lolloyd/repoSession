@@ -152,6 +152,7 @@ export default function Navbar({ roomCode, playerCount, onOpenRules }) {
         {/* How to Play */}
         <button
           onClick={onOpenRules}
+          aria-label="How to play rules"
           title="How to Play"
           style={{
             background: '#ffffff',
