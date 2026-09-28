@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, memo } from 'react';
 import confetti from 'canvas-confetti';
 import { Trophy, RotateCcw, Crown } from 'lucide-react';
 import { sounds } from '../utils/sound';
 
-export default function GameOverScreen({
+function GameOverScreen({
   roomState,
   onResetLobby,
   isHost
 }) {
   const { players } = roomState;
-  const ranked = [...players].sort((a, b) => b.score - a.score);
+  const ranked = useMemo(
+    () => [...players].sort((a, b) => b.score - a.score),
+    [players]
+  );
   const winner = ranked[0];
 
   useEffect(() => {
@@ -260,3 +263,5 @@ export default function GameOverScreen({
     </div>
   );
 }
+
+export default memo(GameOverScreen);

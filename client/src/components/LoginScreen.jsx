@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Users, Sparkles, ArrowRight, Dice5 } from 'lucide-react';
 import { sounds } from '../utils/sound';
 
 const AVATARS = ['🦊', '🐱', '🦁', '🐼', '🦉', '🦄', '🤖', '🚀', '⚡', '🍕', '🎨', '☕'];
 
-export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
+function LoginScreen({ onJoinRoom, initialRoomCode }) {
   const [name, setName] = useState(() => localStorage.getItem('rebus_player_name') || '');
   const [avatar, setAvatar] = useState(() => localStorage.getItem('rebus_player_avatar') || '🦊');
   const [roomCode, setRoomCode] = useState(initialRoomCode || '');
@@ -304,3 +304,5 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
     </div>
   );
 }
+
+export default memo(LoginScreen);
