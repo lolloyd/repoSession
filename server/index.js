@@ -43,8 +43,9 @@ io.on('connection', (socket) => {
   console.log(`[Socket] User connected: ${socket.id}`);
 
   // Join or create room
-  socket.on('join_room', ({ roomCode, playerName, avatar }) => {
+  socket.on('join_room', (data) => {
     try {
+      const { roomCode, playerName, avatar } = data || {};
       const { room, player } = roomManager.joinRoom(socket, roomCode, playerName, avatar);
       socket.emit('join_success', {
         roomCode: room.roomCode,
@@ -69,7 +70,8 @@ io.on('connection', (socket) => {
   });
 
   // Submit answer
-  socket.on('submit_answer', ({ answer }) => {
+  socket.on('submit_answer', (data) => {
+    const { answer } = data || {};
     const room = roomManager.getRoomBySocket(socket.id);
     if (room) {
       room.processAnswer(socket.id, answer);
@@ -77,14 +79,15 @@ io.on('connection', (socket) => {
   });
 
   // Chat message (also processes as guess if game is playing)
-  socket.on('send_chat', ({ text }) => {
+  socket.on('send_chat', (data) => {
+    const { text } = data || {};
     const room = roomManager.getRoomBySocket(socket.id);
     if (!room) return;
 
     const player = room.players.get(socket.id);
     if (!player) return;
 
-    const trimmed = (text || '').trim();
+    const trimmed = typeof text === 'string' ? text.trim().slice(0, 500) : (typeof text === 'number' ? String(text).trim() : '');
     if (!trimmed) return;
 
     // If game is playing and player hasn't answered correctly yet, check answer
@@ -103,7 +106,8 @@ io.on('connection', (socket) => {
   });
 
   // Emoji reaction
-  socket.on('send_reaction', ({ emoji }) => {
+  socket.on('send_reaction', (data) => {
+    const { emoji } = data || {};
     const room = roomManager.getRoomBySocket(socket.id);
     if (room) {
       room.sendReaction(socket.id, emoji);
@@ -127,7 +131,8 @@ io.on('connection', (socket) => {
   });
 
   // Remove bot
-  socket.on('remove_bot', ({ botId }) => {
+  socket.on('remove_bot', (data) => {
+    const { botId } = data || {};
     const room = roomManager.getRoomBySocket(socket.id);
     if (room) {
       room.removeBot(botId);

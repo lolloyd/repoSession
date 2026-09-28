@@ -1,6 +1,6 @@
 // Text normalization and fuzzy matching for rebus puzzles
 function normalizeText(text) {
-  if (!text) return '';
+  if (typeof text !== 'string') return '';
   return text
     .toLowerCase()
     .trim()

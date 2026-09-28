@@ -17,7 +17,8 @@ class RoomManager {
   }
 
   getOrCreateRoom(roomCode) {
-    const code = (roomCode || this.generateRoomCode()).trim().toUpperCase();
+    const safeCode = typeof roomCode === 'string' ? roomCode : String(roomCode || '');
+    const code = (safeCode || this.generateRoomCode()).trim().toUpperCase();
     if (!this.rooms.has(code)) {
       const room = new GameRoom(code, this.io);
       this.rooms.set(code, room);
@@ -26,8 +27,8 @@ class RoomManager {
   }
 
   getRoom(roomCode) {
-    if (!roomCode) return null;
-    return this.rooms.get(roomCode.trim().toUpperCase());
+    if (typeof roomCode !== 'string' && typeof roomCode !== 'number') return null;
+    return this.rooms.get(String(roomCode).trim().toUpperCase());
   }
 
   getRoomBySocket(socketId) {

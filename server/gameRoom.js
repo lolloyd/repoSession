@@ -34,10 +34,11 @@ class GameRoom {
   // --- Player Management ---
   addPlayer(socketId, name, avatar) {
     const isFirst = this.players.size === 0;
+    const safeName = typeof name === 'string' ? name : String(name || '');
     const player = {
       id: socketId,
-      name: name.trim().slice(0, 24) || `Player ${this.players.size + 1}`,
-      avatar: avatar || '🦊',
+      name: safeName.trim().slice(0, 24) || `Player ${this.players.size + 1}`,
+      avatar: typeof avatar === 'string' ? avatar.slice(0, 8) : '🦊',
       score: 0,
       roundsWon: 0,
       streak: 0,
@@ -221,7 +222,7 @@ class GameRoom {
     const player = this.players.get(socketId);
     if (!player) return;
 
-    const trimmed = (guessText || '').trim();
+    const trimmed = typeof guessText === 'string' ? guessText.trim().slice(0, 200) : (typeof guessText === 'number' ? String(guessText).trim() : '');
     if (!trimmed) return;
 
     // Player already answered correctly this round
@@ -415,12 +416,14 @@ class GameRoom {
 
   sendReaction(socketId, emoji) {
     const player = this.players.get(socketId);
-    if (!player) return;
+    if (!player || typeof emoji !== 'string') return;
+    const safeEmoji = emoji.trim().slice(0, 8);
+    if (!safeEmoji) return;
     this.io.to(this.roomCode).emit('player_reaction', {
       playerId: player.id,
       playerName: player.name,
       avatar: player.avatar,
-      emoji
+      emoji: safeEmoji
     });
   }
 
