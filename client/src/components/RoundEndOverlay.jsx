@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { Trophy, Clock, FastForward, Users } from 'lucide-react';
 import { sounds } from '../utils/sound';
 
-export default function RoundEndOverlay({
+function RoundEndOverlay({
   roomState,
   onSkipRound,
   isHost
@@ -216,3 +216,5 @@ export default function RoundEndOverlay({
     </div>
   );
 }
+
+export default memo(RoundEndOverlay);

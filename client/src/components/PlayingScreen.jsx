@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { Send, Clock, CheckCircle2, FastForward, Sparkles } from 'lucide-react';
 import { sounds } from '../utils/sound';
 
-export default function PlayingScreen({
+function PlayingScreen({
   roomState,
   currentUserId,
   onSubmitAnswer,
@@ -370,3 +370,5 @@ export default function PlayingScreen({
     </div>
   );
 }
+
+export default memo(PlayingScreen);

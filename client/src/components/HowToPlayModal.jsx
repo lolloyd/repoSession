@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { X, Lightbulb, CheckCircle2, Trophy } from 'lucide-react';
 
-export default function HowToPlayModal({ onClose }) {
+function HowToPlayModal({ onClose }) {
   return (
     <div style={{
       position: 'fixed',
@@ -149,3 +149,5 @@ export default function HowToPlayModal({ onClose }) {
     </div>
   );
 }
+
+export default memo(HowToPlayModal);

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { Send, MessageSquare } from 'lucide-react';
 
 const QUICK_REACTIONS = ['👏', '🔥', '😂', '💡', '🤔', '🎉'];
 
-export default function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPlaying }) {
+function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPlaying }) {
   const [inputText, setInputText] = useState('');
   const messagesEndRef = useRef(null);
 
@@ -285,3 +285,5 @@ export default function ChatFeed({ messages, onSendMessage, onSendReaction, curr
     </div>
   );
 }
+
+export default memo(ChatFeed);

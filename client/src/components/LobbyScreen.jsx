@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Play, Users, Settings, Plus, Trash2, Sparkles, Share2, Check } from 'lucide-react';
 import { sounds } from '../utils/sound';
 
-export default function LobbyScreen({
+function LobbyScreen({
   roomCode,
   players,
   currentUserId,
@@ -337,3 +337,5 @@ export default function LobbyScreen({
     </div>
   );
 }
+
+export default memo(LobbyScreen);
