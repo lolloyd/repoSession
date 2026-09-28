@@ -12,7 +12,7 @@ export default function PlayingScreen({
   const [guess, setGuess] = useState('');
   const inputRef = useRef(null);
 
-  const { puzzle, timeLeft, currentRound, totalRounds, players, answeredCount, totalPlayerCount, settings } = roomState;
+  const { puzzle, timeLeft, currentRound, totalRounds, players, answeredCount, totalPlayerCount } = roomState;
   const me = players.find((p) => p.id === currentUserId);
 
   useEffect(() => {

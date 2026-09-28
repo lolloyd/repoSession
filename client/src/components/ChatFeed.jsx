@@ -220,6 +220,8 @@ export default function ChatFeed({ messages, onSendMessage, onSendReaction, curr
             key={emoji}
             type="button"
             onClick={() => onSendReaction(emoji)}
+            aria-label={`Send ${emoji} reaction`}
+            title={`React with ${emoji}`}
             style={{
               background: '#ffffff',
               border: '1px solid var(--border-color)',
@@ -263,6 +265,8 @@ export default function ChatFeed({ messages, onSendMessage, onSendReaction, curr
         />
         <button
           type="submit"
+          aria-label="Send message"
+          title="Send message"
           style={{
             background: 'linear-gradient(135deg, #a3c7bb 0%, #bcd4a5 100%)',
             color: '#1c1917',
