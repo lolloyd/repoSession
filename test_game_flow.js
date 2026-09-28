@@ -36,6 +36,10 @@ async function runTest() {
       const room = roomManager.getRoomBySocket(socket.id);
       if (room) room.skipToNext(socket.id);
     });
+    socket.on('update_settings', (settings) => {
+      const room = roomManager.getRoomBySocket(socket.id);
+      if (room) room.updateSettings(settings, socket.id);
+    });
     socket.on('disconnect', () => {
       roomManager.leaveRoom(socket);
     });
@@ -130,8 +134,14 @@ async function runTest() {
   client1.emit('submit_answer', { answer: 12345 });
   client1.emit('send_reaction', null);
   client1.emit('send_reaction', { emoji: 9999 });
+  client1.emit('update_settings', null);
+  client1.emit('update_settings', { totalRounds: 'invalid', roundTime: -100, categoryFilter: 123 });
+  client1.emit('update_settings', { totalRounds: 5, roundTime: 30, showHints: false });
   await new Promise(r => setTimeout(r, 200));
-  console.log('✓ VERIFIED: Server survived malformed inputs without crashing!');
+  if (p1State.settings.totalRounds !== 5 || p1State.settings.roundTime !== 30 || p1State.settings.showHints !== false) {
+    throw new Error('Valid settings update failed after malformed attempts');
+  }
+  console.log('✓ VERIFIED: Server survived malformed inputs and settings without crashing!');
 
   // Cleanup
   client1.disconnect();
