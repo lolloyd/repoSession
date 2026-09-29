@@ -88,8 +88,11 @@ class GameRoom {
     this.broadcastState();
   }
 
-  addBot() {
+  addBot(socketId) {
     if (this.state !== 'lobby') return;
+    if (socketId && socketId !== this.hostId) return;
+    if (this.players.size >= 12) return; // Prevent room flooding / DoS
+
     const existingBots = Array.from(this.players.values()).filter(p => p.isBot);
     const botName = BOT_NAMES[existingBots.length % BOT_NAMES.length];
     const botId = `bot-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
@@ -114,7 +117,8 @@ class GameRoom {
     this.broadcastState();
   }
 
-  removeBot(botId) {
+  removeBot(botId, socketId) {
+    if (socketId && socketId !== this.hostId) return;
     const bot = this.players.get(botId);
     if (bot && bot.isBot) {
       this.players.delete(botId);
