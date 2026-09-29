@@ -155,6 +155,7 @@ export default function PlayingScreen({
           {isHost && (
             <button
               onClick={onSkipRound}
+              aria-label="Skip current puzzle"
               title="Skip this puzzle (Host only)"
               style={{
                 background: '#ffffff',

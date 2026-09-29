@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, Lightbulb, CheckCircle2, Trophy } from 'lucide-react';
 
 export default function HowToPlayModal({ onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   return (
     <div style={{
       position: 'fixed',
@@ -15,17 +25,23 @@ export default function HowToPlayModal({ onClose }) {
       zIndex: 110,
       padding: '20px'
     }}>
-      <div className="glass-panel animate-pop" style={{
-        maxWidth: '560px',
-        width: '100%',
-        padding: '30px',
-        background: '#ffffff',
-        border: '1.5px solid var(--border-color)',
-        maxHeight: '90vh',
-        overflowY: 'auto',
-        position: 'relative',
-        boxShadow: 'var(--shadow-xl)'
-      }}>
+      <div
+        className="glass-panel animate-pop"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="rules-modal-title"
+        style={{
+          maxWidth: '560px',
+          width: '100%',
+          padding: '30px',
+          background: '#ffffff',
+          border: '1.5px solid var(--border-color)',
+          maxHeight: '90vh',
+          overflowY: 'auto',
+          position: 'relative',
+          boxShadow: 'var(--shadow-xl)'
+        }}
+      >
         {/* Close button */}
         <button
           onClick={onClose}
@@ -63,7 +79,7 @@ export default function HowToPlayModal({ onClose }) {
             🧩
           </div>
           <div>
-            <h2 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-primary)' }}>How to Play Rebus</h2>
+            <h2 id="rules-modal-title" style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-primary)' }}>How to Play Rebus</h2>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Virtual team game guide</p>
           </div>
         </div>
