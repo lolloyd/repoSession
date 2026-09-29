@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { io } from 'socket.io-client';
 import Navbar from './components/Navbar';
 import LoginScreen from './components/LoginScreen';
@@ -81,69 +81,75 @@ export default function App() {
     };
   }, []);
 
-  // Actions
-  const handleJoinRoom = ({ roomCode, playerName, avatar }) => {
+  // ⚡ Bolt Optimization: Memoize handlers with useCallback so React.memo child components
+  // (Navbar, ChatFeed, Scoreboard) don't re-render when timer ticks update roomState.
+  const handleOpenRules = useCallback(() => setShowRules(true), []);
+
+  const handleJoinRoom = useCallback(({ roomCode, playerName, avatar }) => {
     if (socket) {
       socket.emit('join_room', { roomCode, playerName, avatar });
     }
-  };
+  }, [socket]);
 
-  const handleStartGame = () => {
+  const handleStartGame = useCallback(() => {
     if (socket) {
       socket.emit('start_game');
     }
-  };
+  }, [socket]);
 
-  const handleSubmitAnswer = (answer) => {
+  const handleSubmitAnswer = useCallback((answer) => {
     if (socket) {
       socket.emit('submit_answer', { answer });
     }
-  };
+  }, [socket]);
 
-  const handleSendChat = (text) => {
+  const handleSendChat = useCallback((text) => {
     if (socket) {
       socket.emit('send_chat', { text });
     }
-  };
+  }, [socket]);
 
-  const handleSendReaction = (emoji) => {
+  const handleSendReaction = useCallback((emoji) => {
     if (socket) {
       socket.emit('send_reaction', { emoji });
     }
-  };
+  }, [socket]);
 
-  const handleUpdateSettings = (settings) => {
+  const handleUpdateSettings = useCallback((settings) => {
     if (socket) {
       socket.emit('update_settings', settings);
     }
-  };
+  }, [socket]);
 
-  const handleAddBot = () => {
+  const handleAddBot = useCallback(() => {
     if (socket) {
       socket.emit('add_bot');
     }
-  };
+  }, [socket]);
 
-  const handleRemoveBot = (botId) => {
+  const handleRemoveBot = useCallback((botId) => {
     if (socket) {
       socket.emit('remove_bot', { botId });
     }
-  };
+  }, [socket]);
 
-  const handleSkipRound = () => {
+  const handleSkipRound = useCallback(() => {
     if (socket) {
       socket.emit('skip_round');
     }
-  };
+  }, [socket]);
 
-  const handleResetLobby = () => {
+  const handleResetLobby = useCallback(() => {
     if (socket) {
       socket.emit('reset_lobby');
     }
-  };
+  }, [socket]);
 
   const isHost = roomState?.hostId === currentUserId;
-  const currentPlayer = roomState?.players.find((p) => p.id === currentUserId);
+  const currentPlayer = useMemo(
+    () => roomState?.players.find((p) => p.id === currentUserId),
+    [roomState?.players, currentUserId]
+  );
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -151,7 +157,7 @@ export default function App() {
       <Navbar
         roomCode={roomState?.roomCode}
         playerCount={roomState?.players.length || 0}
-        onOpenRules={() => setShowRules(true)}
+        onOpenRules={handleOpenRules}
         gameState={roomState?.state}
       />
 
