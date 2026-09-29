@@ -125,7 +125,28 @@ class GameRoom {
 
   updateSettings(newSettings, socketId) {
     if (socketId !== this.hostId) return;
-    this.settings = { ...this.settings, ...newSettings };
+    // Security: Validate settings object structure to prevent state corruption or server DoS
+    if (!newSettings || typeof newSettings !== 'object' || Array.isArray(newSettings)) return;
+
+    const safeSettings = {};
+
+    if (typeof newSettings.totalRounds === 'number' && Number.isInteger(newSettings.totalRounds)) {
+      safeSettings.totalRounds = Math.max(1, Math.min(50, newSettings.totalRounds));
+    }
+
+    if (typeof newSettings.roundTime === 'number' && Number.isFinite(newSettings.roundTime)) {
+      safeSettings.roundTime = Math.max(10, Math.min(300, Math.floor(newSettings.roundTime)));
+    }
+
+    if (typeof newSettings.showHints === 'boolean') {
+      safeSettings.showHints = newSettings.showHints;
+    }
+
+    if (typeof newSettings.categoryFilter === 'string') {
+      safeSettings.categoryFilter = newSettings.categoryFilter.trim().slice(0, 30);
+    }
+
+    this.settings = { ...this.settings, ...safeSettings };
     this.broadcastState();
   }
 
