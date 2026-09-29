@@ -329,6 +329,7 @@ export default function PlayingScreen({
           <input
             ref={inputRef}
             type="text"
+            aria-label="Your puzzle answer"
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             disabled={me?.isCorrect}
@@ -347,6 +348,14 @@ export default function PlayingScreen({
           />
           <button
             type="submit"
+            aria-label="Submit answer"
+            title={
+              me?.isCorrect
+                ? "You've already solved this puzzle!"
+                : !guess.trim()
+                ? "Type an answer first to submit"
+                : "Submit your answer"
+            }
             disabled={me?.isCorrect || !guess.trim()}
             style={{
               padding: '0 26px',

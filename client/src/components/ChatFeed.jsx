@@ -249,6 +249,7 @@ export default function ChatFeed({ messages, onSendMessage, onSendReaction, curr
       }}>
         <input
           type="text"
+          aria-label="Chat or guess message"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={isPlaying ? "Chat or guess here..." : "Type a message to team..."}
