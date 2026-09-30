@@ -128,8 +128,8 @@ async function runTest() {
   const alicePlayer = p1State.players.find(p => p.name === 'Alice');
   console.log(`✓ Alice score: ${alicePlayer.score} pts, streak: ${alicePlayer.streak}`);
 
-  // Step 6: Security - Malformed payload resilience check
-  console.log('6. Testing Security Resilience with malformed socket inputs...');
+  // Step 6: Security - Malformed payload resilience and DoS limit checks
+  console.log('6. Testing Security Resilience & Limits...');
   client1.emit('submit_answer', null);
   client1.emit('submit_answer', { answer: 12345 });
   client1.emit('send_reaction', null);
@@ -141,7 +141,42 @@ async function runTest() {
   if (p1State.settings.totalRounds !== 5 || p1State.settings.roundTime !== 30 || p1State.settings.showHints !== false) {
     throw new Error('Valid settings update failed after malformed attempts');
   }
-  console.log('✓ VERIFIED: Server survived malformed inputs and settings without crashing!');
+
+  // Room code sanitization test
+  const sanitizedRoom = roomManager.getOrCreateRoom('room-code_#123!');
+  if (sanitizedRoom.roomCode !== 'ROOMCODE12') {
+    throw new Error(`Room code sanitization failed: got ${sanitizedRoom.roomCode}`);
+  }
+
+  // Player limit test
+  const testRoom = roomManager.getOrCreateRoom('LIMITTEST');
+  for (let i = 0; i < 32; i++) {
+    testRoom.addPlayer(`socket-${i}`, `Player${i}`, '🦊');
+  }
+  let playerLimitErrorCaught = false;
+  try {
+    testRoom.addPlayer('socket-33', 'OverflowPlayer', '🦊');
+  } catch (err) {
+    if (err.message === 'Room is full') playerLimitErrorCaught = true;
+  }
+  if (!playerLimitErrorCaught) {
+    throw new Error('Player limit enforcement failed');
+  }
+
+  // Max room capacity test
+  let roomLimitErrorCaught = false;
+  try {
+    for (let i = 0; i < 600; i++) {
+      roomManager.getOrCreateRoom(`RM${i}`);
+    }
+  } catch (err) {
+    if (err.message === 'Server room limit reached') roomLimitErrorCaught = true;
+  }
+  if (!roomLimitErrorCaught) {
+    throw new Error('Max room capacity enforcement failed');
+  }
+
+  console.log('✓ VERIFIED: Server survived malformed inputs, sanitized room codes, and enforced room/player DoS limits!');
 
   // Cleanup
   client1.disconnect();

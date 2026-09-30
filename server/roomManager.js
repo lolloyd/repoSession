@@ -1,5 +1,7 @@
 const GameRoom = require('./gameRoom');
 
+const MAX_ROOMS = 500;
+
 class RoomManager {
   constructor(io) {
     this.io = io;
@@ -17,9 +19,15 @@ class RoomManager {
   }
 
   getOrCreateRoom(roomCode) {
-    const safeCode = typeof roomCode === 'string' ? roomCode : String(roomCode || '');
-    const code = (safeCode || this.generateRoomCode()).trim().toUpperCase();
+    const rawCode = typeof roomCode === 'string' ? roomCode : (typeof roomCode === 'number' ? String(roomCode) : '');
+    // Sanitize room code to uppercase alphanumeric, max 10 chars to prevent DoS/injection
+    const sanitizedCode = rawCode.replace(/[^a-zA-Z0-9]/g, '').trim().toUpperCase().slice(0, 10);
+    const code = sanitizedCode || this.generateRoomCode();
+
     if (!this.rooms.has(code)) {
+      if (this.rooms.size >= MAX_ROOMS) {
+        throw new Error('Server room limit reached');
+      }
       const room = new GameRoom(code, this.io);
       this.rooms.set(code, room);
     }
@@ -28,7 +36,8 @@ class RoomManager {
 
   getRoom(roomCode) {
     if (typeof roomCode !== 'string' && typeof roomCode !== 'number') return null;
-    return this.rooms.get(String(roomCode).trim().toUpperCase());
+    const safeCode = String(roomCode).replace(/[^a-zA-Z0-9]/g, '').trim().toUpperCase().slice(0, 10);
+    return this.rooms.get(safeCode);
   }
 
   getRoomBySocket(socketId) {
