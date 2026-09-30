@@ -3,7 +3,13 @@ import { Send, MessageSquare } from 'lucide-react';
 
 const QUICK_REACTIONS = ['👏', '🔥', '😂', '💡', '🤔', '🎉'];
 
-export default function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPlaying }) {
+/**
+ * ⚡ Bolt Optimization:
+ * Memoized ChatFeed component using React.memo.
+ * Prevents re-rendering on timer_tick socket updates when messages, reactions,
+ * and player status remain unchanged during active gameplay.
+ */
+function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPlaying }) {
   const [inputText, setInputText] = useState('');
   const messagesEndRef = useRef(null);
 
@@ -285,3 +291,5 @@ export default function ChatFeed({ messages, onSendMessage, onSendReaction, curr
     </div>
   );
 }
+
+export default React.memo(ChatFeed);
