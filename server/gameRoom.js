@@ -33,6 +33,11 @@ class GameRoom {
 
   // --- Player Management ---
   addPlayer(socketId, name, avatar) {
+    // Security: Cap players per room to prevent memory/broadcast DoS
+    if (this.players.size >= 32) {
+      throw new Error('Room is full');
+    }
+
     const isFirst = this.players.size === 0;
     const safeName = typeof name === 'string' ? name : String(name || '');
     const player = {
@@ -89,7 +94,7 @@ class GameRoom {
   }
 
   addBot() {
-    if (this.state !== 'lobby') return;
+    if (this.state !== 'lobby' || this.players.size >= 32) return;
     const existingBots = Array.from(this.players.values()).filter(p => p.isBot);
     const botName = BOT_NAMES[existingBots.length % BOT_NAMES.length];
     const botId = `bot-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
