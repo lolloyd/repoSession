@@ -94,6 +94,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
               <button
                 type="button"
                 onClick={handleRandomizeAvatar}
+                aria-label="Pick random avatar"
+                title="Pick random avatar"
                 style={{
                   background: 'none',
                   color: 'var(--c-seafoam-dark)',
@@ -117,6 +119,9 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
                   key={av}
                   type="button"
                   onClick={() => setAvatar(av)}
+                  aria-label={`Select avatar ${av}`}
+                  aria-pressed={avatar === av}
+                  title={`Select avatar ${av}`}
                   style={{
                     background: avatar === av ? 'var(--c-seafoam-bg)' : '#ffffff',
                     border: avatar === av ? '2px solid var(--c-seafoam)' : '1px solid var(--border-color)',
@@ -135,16 +140,20 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
 
           {/* Player Name */}
           <div style={{ marginBottom: '22px' }}>
-            <label style={{
-              display: 'block',
-              fontSize: '0.85rem',
-              fontWeight: 700,
-              color: 'var(--text-secondary)',
-              marginBottom: '8px'
-            }}>
+            <label
+              htmlFor="player-name-input"
+              style={{
+                display: 'block',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                color: 'var(--text-secondary)',
+                marginBottom: '8px'
+              }}
+            >
               Your Name / Team Handle
             </label>
             <input
+              id="player-name-input"
               type="text"
               required
               maxLength={24}
@@ -219,16 +228,20 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
           {/* Room Code Field */}
           {mode === 'join' ? (
             <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '0.85rem',
-                fontWeight: 700,
-                color: 'var(--text-secondary)',
-                marginBottom: '8px'
-              }}>
+              <label
+                htmlFor="room-code-input"
+                style={{
+                  display: 'block',
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  color: 'var(--text-secondary)',
+                  marginBottom: '8px'
+                }}
+              >
                 Room Code
               </label>
               <input
+                id="room-code-input"
                 type="text"
                 required
                 maxLength={12}
