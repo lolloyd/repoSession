@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { Volume2, VolumeX, Copy, Check, Users, HelpCircle } from 'lucide-react';
 import { sounds } from '../utils/sound';
 
-export default function Navbar({ roomCode, playerCount, onOpenRules }) {
+/**
+ * ⚡ Bolt Optimization:
+ * Memoized Navbar component using React.memo.
+ * Prevents re-rendering every second during game timer_tick socket updates
+ * when roomCode, playerCount, and onOpenRules handler remain unchanged.
+ */
+function Navbar({ roomCode, playerCount, onOpenRules }) {
   const [copied, setCopied] = useState(false);
   const [muted, setMuted] = useState(sounds.muted);
 
@@ -195,3 +201,5 @@ export default function Navbar({ roomCode, playerCount, onOpenRules }) {
     </header>
   );
 }
+
+export default React.memo(Navbar);
