@@ -3,6 +3,20 @@ import { Users, Sparkles, ArrowRight, Dice5 } from 'lucide-react';
 import { sounds } from '../utils/sound';
 
 const AVATARS = ['🦊', '🐱', '🦁', '🐼', '🦉', '🦄', '🤖', '🚀', '⚡', '🍕', '🎨', '☕'];
+const AVATAR_LABELS = {
+  '🦊': 'Fox',
+  '🐱': 'Cat',
+  '🦁': 'Lion',
+  '🐼': 'Panda',
+  '🦉': 'Owl',
+  '🦄': 'Unicorn',
+  '🤖': 'Robot',
+  '🚀': 'Rocket',
+  '⚡': 'Lightning',
+  '🍕': 'Pizza',
+  '🎨': 'Palette',
+  '☕': 'Coffee'
+};
 
 export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
   const [name, setName] = useState(() => localStorage.getItem('rebus_player_name') || '');
@@ -94,6 +108,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
               <button
                 type="button"
                 onClick={handleRandomizeAvatar}
+                aria-label="Randomize avatar"
+                title="Randomize avatar"
                 style={{
                   background: 'none',
                   color: 'var(--c-seafoam-dark)',
@@ -117,6 +133,9 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
                   key={av}
                   type="button"
                   onClick={() => setAvatar(av)}
+                  aria-label={`Select ${AVATAR_LABELS[av] || av} avatar`}
+                  aria-pressed={avatar === av}
+                  title={AVATAR_LABELS[av] || av}
                   style={{
                     background: avatar === av ? 'var(--c-seafoam-bg)' : '#ffffff',
                     border: avatar === av ? '2px solid var(--c-seafoam)' : '1px solid var(--border-color)',
@@ -187,6 +206,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
             <button
               type="button"
               onClick={() => setMode('create')}
+              aria-pressed={mode === 'create'}
               style={{
                 padding: '9px',
                 borderRadius: '10px',
@@ -202,6 +222,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
             <button
               type="button"
               onClick={() => setMode('join')}
+              aria-pressed={mode === 'join'}
               style={{
                 padding: '9px',
                 borderRadius: '10px',
