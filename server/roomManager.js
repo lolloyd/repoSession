@@ -17,9 +17,15 @@ class RoomManager {
   }
 
   getOrCreateRoom(roomCode) {
-    const safeCode = typeof roomCode === 'string' ? roomCode : String(roomCode || '');
-    const code = (safeCode || this.generateRoomCode()).trim().toUpperCase();
+    const safeCode = typeof roomCode === 'string' || typeof roomCode === 'number' ? String(roomCode) : '';
+    // Sanitize roomCode to uppercase alphanumeric characters, max 10 chars
+    const sanitized = safeCode.replace(/[^a-zA-Z0-9]/g, '').trim().toUpperCase().slice(0, 10);
+    const code = sanitized || this.generateRoomCode();
     if (!this.rooms.has(code)) {
+      // Prevent unbounded room creation memory DoS
+      if (this.rooms.size >= 1000) {
+        throw new Error('Server room capacity reached');
+      }
       const room = new GameRoom(code, this.io);
       this.rooms.set(code, room);
     }
@@ -28,7 +34,8 @@ class RoomManager {
 
   getRoom(roomCode) {
     if (typeof roomCode !== 'string' && typeof roomCode !== 'number') return null;
-    return this.rooms.get(String(roomCode).trim().toUpperCase());
+    const sanitized = String(roomCode).replace(/[^a-zA-Z0-9]/g, '').trim().toUpperCase().slice(0, 10);
+    return this.rooms.get(sanitized);
   }
 
   getRoomBySocket(socketId) {
