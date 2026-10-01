@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Trophy, Flame, CheckCircle, Clock, Crown } from 'lucide-react';
 
-export default function Scoreboard({ players, currentUserId, isPlaying }) {
-  const sortedPlayers = [...players].sort((a, b) => b.score - a.score);
+// Wrapped with React.memo to prevent unnecessary re-renders on timer ticks
+const Scoreboard = React.memo(function Scoreboard({ players, currentUserId, isPlaying }) {
+  // Memoize player sorting so array allocation/sort only runs when players array changes
+  const sortedPlayers = useMemo(
+    () => [...players].sort((a, b) => b.score - a.score),
+    [players]
+  );
 
   return (
     <div className="glass-panel" style={{
@@ -149,4 +154,6 @@ export default function Scoreboard({ players, currentUserId, isPlaying }) {
       </div>
     </div>
   );
-}
+});
+
+export default Scoreboard;
