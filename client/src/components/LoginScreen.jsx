@@ -117,6 +117,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
                   key={av}
                   type="button"
                   onClick={() => setAvatar(av)}
+                  aria-label={`Select avatar ${av}`}
+                  title={`Select ${av}`}
                   style={{
                     background: avatar === av ? 'var(--c-seafoam-bg)' : '#ffffff',
                     border: avatar === av ? '2px solid var(--c-seafoam)' : '1px solid var(--border-color)',
@@ -124,7 +126,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
                     padding: '8px 0',
                     fontSize: '1.5rem',
                     transform: avatar === av ? 'scale(1.08)' : 'scale(1)',
-                    boxShadow: avatar === av ? '0 4px 12px rgba(163, 199, 187, 0.4)' : 'var(--shadow-sm)'
+                    boxShadow: avatar === av ? '0 4px 12px rgba(163, 199, 187, 0.4)' : 'var(--shadow-sm)',
+                    cursor: 'pointer'
                   }}
                 >
                   {av}
