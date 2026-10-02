@@ -8,17 +8,24 @@ const RoomManager = require('./roomManager');
 const app = express();
 const server = http.createServer(app);
 
+// Security: Restrict CORS origins to prevent CSWSH (Cross-Site WebSocket Hijacking)
+const allowedOrigins = process.env.ALLOWED_ORIGIN
+  ? process.env.ALLOWED_ORIGIN.split(',').map(o => o.trim())
+  : ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173'];
+
+const corsOptions = {
+  origin: allowedOrigins,
+  methods: ['GET', 'POST']
+};
+
 const io = new Server(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST']
-  }
+  cors: corsOptions
 });
 
 const PORT = process.env.PORT || 3001;
 const roomManager = new RoomManager(io);
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Serve extracted puzzle images statically
