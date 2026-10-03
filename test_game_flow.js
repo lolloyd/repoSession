@@ -40,6 +40,10 @@ async function runTest() {
       const room = roomManager.getRoomBySocket(socket.id);
       if (room) room.updateSettings(settings, socket.id);
     });
+    socket.on('add_bot', () => {
+      const room = roomManager.getRoomBySocket(socket.id);
+      if (room) room.addBot();
+    });
     socket.on('disconnect', () => {
       roomManager.leaveRoom(socket);
     });
@@ -142,6 +146,21 @@ async function runTest() {
     throw new Error('Valid settings update failed after malformed attempts');
   }
   console.log('✓ VERIFIED: Server survived malformed inputs and settings without crashing!');
+
+  // Step 7: Security - Bot capacity and room code limits
+  console.log('7. Testing Security - Bot capacity and room limits...');
+  const testRoom = roomManager.getOrCreateRoom('VERYLONGROOMCODENAME12345');
+  if (testRoom.roomCode.length > 10) {
+    throw new Error(`roomCode was not truncated: ${testRoom.roomCode}`);
+  }
+  for (let i = 0; i < 10; i++) {
+    testRoom.addBot();
+  }
+  const bots = Array.from(testRoom.players.values()).filter(p => p.isBot);
+  if (bots.length > 5) {
+    throw new Error(`Bot limit exceeded! Bots count: ${bots.length}`);
+  }
+  console.log(`✓ VERIFIED: Bot count capped at ${bots.length} (max 5) and roomCode truncated to "${testRoom.roomCode}"`);
 
   // Cleanup
   client1.disconnect();

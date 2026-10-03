@@ -18,6 +18,22 @@ const io = new Server(server, {
 const PORT = process.env.PORT || 3001;
 const roomManager = new RoomManager(io);
 
+// Security: Lightweight socket rate limiter to prevent DoS & event spam
+const socketRateMap = new Map();
+
+function isRateLimited(socketId, maxPerSec = 10) {
+  const now = Date.now();
+  const record = socketRateMap.get(socketId) || { count: 0, resetTime: now + 1000 };
+  if (now > record.resetTime) {
+    record.count = 1;
+    record.resetTime = now + 1000;
+  } else {
+    record.count += 1;
+  }
+  socketRateMap.set(socketId, record);
+  return record.count > maxPerSec;
+}
+
 app.use(cors());
 app.use(express.json());
 
@@ -57,7 +73,7 @@ io.on('connection', (socket) => {
       console.log(`[Room ${room.roomCode}] ${player.name} (${player.avatar}) joined`);
     } catch (err) {
       console.error('Error joining room:', err);
-      socket.emit('error_message', 'Failed to join room');
+      socket.emit('error_message', err.message || 'Failed to join room');
     }
   });
 
@@ -71,6 +87,7 @@ io.on('connection', (socket) => {
 
   // Submit answer
   socket.on('submit_answer', (data) => {
+    if (isRateLimited(socket.id)) return;
     const { answer } = data || {};
     const room = roomManager.getRoomBySocket(socket.id);
     if (room) {
@@ -80,6 +97,7 @@ io.on('connection', (socket) => {
 
   // Chat message (also processes as guess if game is playing)
   socket.on('send_chat', (data) => {
+    if (isRateLimited(socket.id)) return;
     const { text } = data || {};
     const room = roomManager.getRoomBySocket(socket.id);
     if (!room) return;
@@ -107,6 +125,7 @@ io.on('connection', (socket) => {
 
   // Emoji reaction
   socket.on('send_reaction', (data) => {
+    if (isRateLimited(socket.id)) return;
     const { emoji } = data || {};
     const room = roomManager.getRoomBySocket(socket.id);
     if (room) {
@@ -124,6 +143,7 @@ io.on('connection', (socket) => {
 
   // Add AI bot teammate (host or player in lobby)
   socket.on('add_bot', () => {
+    if (isRateLimited(socket.id)) return;
     const room = roomManager.getRoomBySocket(socket.id);
     if (room) {
       room.addBot();
@@ -158,6 +178,7 @@ io.on('connection', (socket) => {
   // Disconnect
   socket.on('disconnect', () => {
     console.log(`[Socket] User disconnected: ${socket.id}`);
+    socketRateMap.delete(socket.id);
     roomManager.leaveRoom(socket);
   });
 });
