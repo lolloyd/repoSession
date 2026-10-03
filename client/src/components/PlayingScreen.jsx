@@ -329,6 +329,7 @@ export default function PlayingScreen({
           <input
             ref={inputRef}
             type="text"
+            aria-label="Puzzle answer guess"
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             disabled={me?.isCorrect}

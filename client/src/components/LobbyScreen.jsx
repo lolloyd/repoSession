@@ -248,13 +248,14 @@ export default function LobbyScreen({
         {/* Rounds Setting */}
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
+            <label htmlFor="setting-total-rounds" style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
               Number of Puzzles
             </label>
             <span style={{ fontWeight: 800, color: 'var(--c-peach-dark)' }}>{settings.totalRounds} Rounds</span>
           </div>
           {isHost ? (
             <input
+              id="setting-total-rounds"
               type="range"
               min={3}
               max={25}
@@ -271,13 +272,14 @@ export default function LobbyScreen({
         {/* Round Timer Setting */}
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
+            <label htmlFor="setting-round-time" style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>
               Time per Puzzle
             </label>
             <span style={{ fontWeight: 800, color: 'var(--c-peach-dark)' }}>{settings.roundTime}s</span>
           </div>
           {isHost ? (
             <input
+              id="setting-round-time"
               type="range"
               min={20}
               max={90}
@@ -303,11 +305,12 @@ export default function LobbyScreen({
           boxShadow: 'var(--shadow-sm)'
         }}>
           <div>
-            <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-primary)' }}>Show Letter Blanks</div>
+            <label htmlFor="setting-show-hints" style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-primary)', display: 'block', cursor: 'pointer' }}>Show Letter Blanks</label>
             <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>Displays pattern like: _ _ _ _ _ _ _ _</div>
           </div>
           {isHost ? (
             <input
+              id="setting-show-hints"
               type="checkbox"
               checked={settings.showHints}
               onChange={(e) => onUpdateSettings({ showHints: e.target.checked })}
