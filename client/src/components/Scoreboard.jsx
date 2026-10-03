@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Trophy, Flame, CheckCircle, Clock, Crown } from 'lucide-react';
 
-export default function Scoreboard({ players, currentUserId, isPlaying }) {
+/**
+ * ⚡ Bolt Optimization:
+ * Memoize Scoreboard to avoid re-rendering every second during timer ticks when player scores/statuses haven't changed.
+ */
+function Scoreboard({ players, currentUserId, isPlaying }) {
   const sortedPlayers = [...players].sort((a, b) => b.score - a.score);
 
   return (
@@ -150,3 +154,5 @@ export default function Scoreboard({ players, currentUserId, isPlaying }) {
     </div>
   );
 }
+
+export default memo(Scoreboard);
