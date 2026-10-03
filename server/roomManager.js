@@ -18,7 +18,7 @@ class RoomManager {
 
   getOrCreateRoom(roomCode) {
     const safeCode = typeof roomCode === 'string' ? roomCode : String(roomCode || '');
-    const code = (safeCode || this.generateRoomCode()).trim().toUpperCase();
+    const code = (safeCode.trim().slice(0, 10).toUpperCase() || this.generateRoomCode());
     if (!this.rooms.has(code)) {
       const room = new GameRoom(code, this.io);
       this.rooms.set(code, room);

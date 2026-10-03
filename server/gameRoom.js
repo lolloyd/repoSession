@@ -2,6 +2,8 @@ const { checkAnswer } = require('./matcher');
 const allPuzzles = require('./data/puzzles.json');
 
 const BOT_NAMES = ['Bot Charlie 🤖', 'Bot Maya 🐱', 'Bot Alex 🦊', 'Bot Sam 🦉', 'Bot Jordan ⚡'];
+const MAX_PLAYERS_PER_ROOM = 16;
+const MAX_BOTS_PER_ROOM = 5;
 
 class GameRoom {
   constructor(roomCode, io) {
@@ -33,6 +35,9 @@ class GameRoom {
 
   // --- Player Management ---
   addPlayer(socketId, name, avatar) {
+    if (this.players.size >= MAX_PLAYERS_PER_ROOM) {
+      throw new Error('Room is full (maximum 16 players)');
+    }
     const isFirst = this.players.size === 0;
     const safeName = typeof name === 'string' ? name : String(name || '');
     const player = {
@@ -91,6 +96,7 @@ class GameRoom {
   addBot() {
     if (this.state !== 'lobby') return;
     const existingBots = Array.from(this.players.values()).filter(p => p.isBot);
+    if (existingBots.length >= MAX_BOTS_PER_ROOM || this.players.size >= MAX_PLAYERS_PER_ROOM) return;
     const botName = BOT_NAMES[existingBots.length % BOT_NAMES.length];
     const botId = `bot-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
 
