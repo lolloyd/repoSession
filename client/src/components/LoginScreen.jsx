@@ -117,6 +117,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
                   key={av}
                   type="button"
                   onClick={() => setAvatar(av)}
+                  aria-label={`Select avatar ${av}`}
+                  aria-pressed={avatar === av}
                   style={{
                     background: avatar === av ? 'var(--c-seafoam-bg)' : '#ffffff',
                     border: avatar === av ? '2px solid var(--c-seafoam)' : '1px solid var(--border-color)',
@@ -135,7 +137,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
 
           {/* Player Name */}
           <div style={{ marginBottom: '22px' }}>
-            <label style={{
+            <label htmlFor="player-name" style={{
               display: 'block',
               fontSize: '0.85rem',
               fontWeight: 700,
@@ -145,6 +147,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
               Your Name / Team Handle
             </label>
             <input
+              id="player-name"
               type="text"
               required
               maxLength={24}
@@ -187,6 +190,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
             <button
               type="button"
               onClick={() => setMode('create')}
+              aria-pressed={mode === 'create'}
               style={{
                 padding: '9px',
                 borderRadius: '10px',
@@ -202,6 +206,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
             <button
               type="button"
               onClick={() => setMode('join')}
+              aria-pressed={mode === 'join'}
               style={{
                 padding: '9px',
                 borderRadius: '10px',
@@ -219,7 +224,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
           {/* Room Code Field */}
           {mode === 'join' ? (
             <div style={{ marginBottom: '24px' }}>
-              <label style={{
+              <label htmlFor="room-code" style={{
                 display: 'block',
                 fontSize: '0.85rem',
                 fontWeight: 700,
@@ -229,6 +234,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
                 Room Code
               </label>
               <input
+                id="room-code"
                 type="text"
                 required
                 maxLength={12}
