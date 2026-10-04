@@ -1,9 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { Send, MessageSquare } from 'lucide-react';
 
 const QUICK_REACTIONS = ['👏', '🔥', '😂', '💡', '🤔', '🎉'];
 
-export default function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPlaying }) {
+/**
+ * ⚡ Bolt Optimization:
+ * Wrapped with React.memo to prevent expensive message re-renders and scroll calculations
+ * on every timer tick when message history and player state are unchanged.
+ */
+function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPlaying }) {
   const [inputText, setInputText] = useState('');
   const messagesEndRef = useRef(null);
 
@@ -285,3 +290,5 @@ export default function ChatFeed({ messages, onSendMessage, onSendReaction, curr
     </div>
   );
 }
+
+export default memo(ChatFeed);
