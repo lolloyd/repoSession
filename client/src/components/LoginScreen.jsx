@@ -94,6 +94,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
               <button
                 type="button"
                 onClick={handleRandomizeAvatar}
+                aria-label="Pick a random avatar"
+                title="Pick a random avatar"
                 style={{
                   background: 'none',
                   color: 'var(--c-seafoam-dark)',
@@ -117,6 +119,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
                   key={av}
                   type="button"
                   onClick={() => setAvatar(av)}
+                  aria-label={`Select avatar ${av}`}
+                  title={`Select avatar ${av}`}
                   style={{
                     background: avatar === av ? 'var(--c-seafoam-bg)' : '#ffffff',
                     border: avatar === av ? '2px solid var(--c-seafoam)' : '1px solid var(--border-color)',
@@ -135,7 +139,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
 
           {/* Player Name */}
           <div style={{ marginBottom: '22px' }}>
-            <label style={{
+            <label htmlFor="player-name-input" style={{
               display: 'block',
               fontSize: '0.85rem',
               fontWeight: 700,
@@ -145,6 +149,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
               Your Name / Team Handle
             </label>
             <input
+              id="player-name-input"
               type="text"
               required
               maxLength={24}
@@ -219,7 +224,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
           {/* Room Code Field */}
           {mode === 'join' ? (
             <div style={{ marginBottom: '24px' }}>
-              <label style={{
+              <label htmlFor="room-code-input" style={{
                 display: 'block',
                 fontSize: '0.85rem',
                 fontWeight: 700,
@@ -229,6 +234,7 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
                 Room Code
               </label>
               <input
+                id="room-code-input"
                 type="text"
                 required
                 maxLength={12}
