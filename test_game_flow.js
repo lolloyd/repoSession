@@ -40,6 +40,15 @@ async function runTest() {
       const room = roomManager.getRoomBySocket(socket.id);
       if (room) room.updateSettings(settings, socket.id);
     });
+    socket.on('add_bot', () => {
+      const room = roomManager.getRoomBySocket(socket.id);
+      if (room) room.addBot(socket.id);
+    });
+    socket.on('remove_bot', (data) => {
+      const { botId } = data || {};
+      const room = roomManager.getRoomBySocket(socket.id);
+      if (room) room.removeBot(botId, socket.id);
+    });
     socket.on('disconnect', () => {
       roomManager.leaveRoom(socket);
     });
@@ -69,6 +78,39 @@ async function runTest() {
 
   if (p1State.players.length !== 2) throw new Error('Failed to join 2 players');
   console.log('✓ Both players joined room successfully.');
+
+  // Step 1.5: Security Authorization - Non-host cannot add/remove bots while in lobby
+  console.log('1.5 Testing Security Authorization for Bot Management in Lobby...');
+  // Bob (client2) is not host and tries to add a bot
+  client2.emit('add_bot');
+  await new Promise(r => setTimeout(r, 200));
+  if (p1State.players.some(p => p.isBot)) {
+    throw new Error('Non-host player was allowed to add a bot!');
+  }
+
+  // Alice (client1) is host and adds a bot
+  client1.emit('add_bot');
+  await new Promise(r => setTimeout(r, 200));
+  const botPlayer = p1State.players.find(p => p.isBot);
+  if (!botPlayer) {
+    throw new Error('Host was unable to add a bot!');
+  }
+
+  // Bob tries to remove the bot
+  client2.emit('remove_bot', { botId: botPlayer.id });
+  await new Promise(r => setTimeout(r, 200));
+  if (!p1State.players.some(p => p.id === botPlayer.id)) {
+    throw new Error('Non-host player was allowed to remove a bot!');
+  }
+
+  // Alice removes the bot
+  client1.emit('remove_bot', { botId: botPlayer.id });
+  await new Promise(r => setTimeout(r, 200));
+  if (p1State.players.some(p => p.id === botPlayer.id)) {
+    throw new Error('Host was unable to remove a bot!');
+  }
+
+  console.log('✓ VERIFIED: Bot management correctly restricted to host only in lobby!');
 
   // Step 2: Start Game
   console.log('2. Alice (Host) starts the game...');
@@ -142,6 +184,7 @@ async function runTest() {
     throw new Error('Valid settings update failed after malformed attempts');
   }
   console.log('✓ VERIFIED: Server survived malformed inputs and settings without crashing!');
+
 
   // Cleanup
   client1.disconnect();

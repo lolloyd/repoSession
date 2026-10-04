@@ -18,17 +18,19 @@ class RoomManager {
 
   getOrCreateRoom(roomCode) {
     const safeCode = typeof roomCode === 'string' ? roomCode : String(roomCode || '');
-    const code = (safeCode || this.generateRoomCode()).trim().toUpperCase();
-    if (!this.rooms.has(code)) {
-      const room = new GameRoom(code, this.io);
-      this.rooms.set(code, room);
+    const code = (safeCode || this.generateRoomCode()).trim().toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
+    const finalCode = code || this.generateRoomCode();
+    if (!this.rooms.has(finalCode)) {
+      const room = new GameRoom(finalCode, this.io);
+      this.rooms.set(finalCode, room);
     }
-    return this.rooms.get(code);
+    return this.rooms.get(finalCode);
   }
 
   getRoom(roomCode) {
     if (typeof roomCode !== 'string' && typeof roomCode !== 'number') return null;
-    return this.rooms.get(String(roomCode).trim().toUpperCase());
+    const sanitized = String(roomCode).trim().toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
+    return this.rooms.get(sanitized);
   }
 
   getRoomBySocket(socketId) {

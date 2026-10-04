@@ -33,6 +33,9 @@ class GameRoom {
 
   // --- Player Management ---
   addPlayer(socketId, name, avatar) {
+    if (this.players.size >= 20) {
+      throw new Error('Room is full (max 20 players)');
+    }
     const isFirst = this.players.size === 0;
     const safeName = typeof name === 'string' ? name : String(name || '');
     const player = {
@@ -88,8 +91,10 @@ class GameRoom {
     this.broadcastState();
   }
 
-  addBot() {
-    if (this.state !== 'lobby') return;
+  addBot(requesterSocketId) {
+    // Security: Only host can add bots and room max capacity enforced
+    if (requesterSocketId && requesterSocketId !== this.hostId) return;
+    if (this.state !== 'lobby' || this.players.size >= 20) return;
     const existingBots = Array.from(this.players.values()).filter(p => p.isBot);
     const botName = BOT_NAMES[existingBots.length % BOT_NAMES.length];
     const botId = `bot-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
@@ -114,7 +119,9 @@ class GameRoom {
     this.broadcastState();
   }
 
-  removeBot(botId) {
+  removeBot(botId, requesterSocketId) {
+    // Security: Only host can remove bots
+    if (requesterSocketId && requesterSocketId !== this.hostId) return;
     const bot = this.players.get(botId);
     if (bot && bot.isBot) {
       this.players.delete(botId);
