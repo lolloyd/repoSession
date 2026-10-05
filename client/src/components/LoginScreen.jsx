@@ -4,6 +4,21 @@ import { sounds } from '../utils/sound';
 
 const AVATARS = ['🦊', '🐱', '🦁', '🐼', '🦉', '🦄', '🤖', '🚀', '⚡', '🍕', '🎨', '☕'];
 
+const AVATAR_LABELS = {
+  '🦊': 'Fox',
+  '🐱': 'Cat',
+  '🦁': 'Lion',
+  '🐼': 'Panda',
+  '🦉': 'Owl',
+  '🦄': 'Unicorn',
+  '🤖': 'Robot',
+  '🚀': 'Rocket',
+  '⚡': 'Lightning',
+  '🍕': 'Pizza',
+  '🎨': 'Palette',
+  '☕': 'Coffee'
+};
+
 export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
   const [name, setName] = useState(() => localStorage.getItem('rebus_player_name') || '');
   const [avatar, setAvatar] = useState(() => localStorage.getItem('rebus_player_avatar') || '🦊');
@@ -94,6 +109,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
               <button
                 type="button"
                 onClick={handleRandomizeAvatar}
+                aria-label="Randomize avatar"
+                title="Randomize avatar"
                 style={{
                   background: 'none',
                   color: 'var(--c-seafoam-dark)',
@@ -112,24 +129,30 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
               gridTemplateColumns: 'repeat(6, 1fr)',
               gap: '8px'
             }}>
-              {AVATARS.map((av) => (
-                <button
-                  key={av}
-                  type="button"
-                  onClick={() => setAvatar(av)}
-                  style={{
-                    background: avatar === av ? 'var(--c-seafoam-bg)' : '#ffffff',
-                    border: avatar === av ? '2px solid var(--c-seafoam)' : '1px solid var(--border-color)',
-                    borderRadius: '14px',
-                    padding: '8px 0',
-                    fontSize: '1.5rem',
-                    transform: avatar === av ? 'scale(1.08)' : 'scale(1)',
-                    boxShadow: avatar === av ? '0 4px 12px rgba(163, 199, 187, 0.4)' : 'var(--shadow-sm)'
-                  }}
-                >
-                  {av}
-                </button>
-              ))}
+              {AVATARS.map((av) => {
+                const label = AVATAR_LABELS[av] || 'Avatar';
+                const isSelected = avatar === av;
+                return (
+                  <button
+                    key={av}
+                    type="button"
+                    onClick={() => setAvatar(av)}
+                    aria-label={`${label} avatar${isSelected ? ', selected' : ''}`}
+                    title={`${label} avatar`}
+                    style={{
+                      background: isSelected ? 'var(--c-seafoam-bg)' : '#ffffff',
+                      border: isSelected ? '2px solid var(--c-seafoam)' : '1px solid var(--border-color)',
+                      borderRadius: '14px',
+                      padding: '8px 0',
+                      fontSize: '1.5rem',
+                      transform: isSelected ? 'scale(1.08)' : 'scale(1)',
+                      boxShadow: isSelected ? '0 4px 12px rgba(163, 199, 187, 0.4)' : 'var(--shadow-sm)'
+                    }}
+                  >
+                    {av}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
