@@ -40,6 +40,15 @@ async function runTest() {
       const room = roomManager.getRoomBySocket(socket.id);
       if (room) room.updateSettings(settings, socket.id);
     });
+    socket.on('add_bot', () => {
+      const room = roomManager.getRoomBySocket(socket.id);
+      if (room) room.addBot(socket.id);
+    });
+    socket.on('remove_bot', (data) => {
+      const { botId } = data || {};
+      const room = roomManager.getRoomBySocket(socket.id);
+      if (room) room.removeBot(botId, socket.id);
+    });
     socket.on('disconnect', () => {
       roomManager.leaveRoom(socket);
     });
@@ -152,6 +161,13 @@ async function runTest() {
   if (p1State.settings.totalRounds !== 5 || p1State.settings.roundTime !== 30 || p1State.settings.showHints !== false) {
     throw new Error('Valid settings update failed after malformed attempts');
   }
+
+  // Room code length sanitization check
+  const longRoom = roomManager.getOrCreateRoom('VERYLONGROOMCODE123456789');
+  if (longRoom.roomCode.length > 10) {
+    throw new Error(`Room code length exceeds 10 chars: ${longRoom.roomCode}`);
+  }
+
   console.log('✓ VERIFIED: Server survived malformed inputs and settings without crashing!');
 
   // Cleanup

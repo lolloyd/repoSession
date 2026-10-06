@@ -130,20 +130,20 @@ io.on('connection', (socket) => {
     }
   });
 
-  // Add AI bot teammate (host or player in lobby)
+  // Add AI bot teammate (host only)
   socket.on('add_bot', () => {
     const room = roomManager.getRoomBySocket(socket.id);
     if (room) {
-      room.addBot();
+      room.addBot(socket.id);
     }
   });
 
-  // Remove bot
+  // Remove bot (host only)
   socket.on('remove_bot', (data) => {
     const { botId } = data || {};
     const room = roomManager.getRoomBySocket(socket.id);
     if (room) {
-      room.removeBot(botId);
+      room.removeBot(botId, socket.id);
     }
   });
 
