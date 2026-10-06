@@ -256,6 +256,7 @@ export default function LobbyScreen({
           {isHost ? (
             <input
               type="range"
+              aria-label="Number of Puzzles"
               min={3}
               max={25}
               step={1}
@@ -279,6 +280,7 @@ export default function LobbyScreen({
           {isHost ? (
             <input
               type="range"
+              aria-label="Time per Puzzle in seconds"
               min={20}
               max={90}
               step={5}
@@ -309,6 +311,7 @@ export default function LobbyScreen({
           {isHost ? (
             <input
               type="checkbox"
+              aria-label="Show Letter Blanks"
               checked={settings.showHints}
               onChange={(e) => onUpdateSettings({ showHints: e.target.checked })}
               style={{ width: '20px', height: '20px', accentColor: 'var(--c-seafoam)', cursor: 'pointer' }}

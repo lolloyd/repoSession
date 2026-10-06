@@ -137,8 +137,19 @@ async function runTest() {
   const alicePlayer = p1State.players.find(p => p.name === 'Alice');
   console.log(`✓ Alice score: ${alicePlayer.score} pts, streak: ${alicePlayer.streak}`);
 
-  // Step 6: Security - Malformed payload resilience check
-  console.log('6. Testing Security Resilience with malformed socket inputs...');
+  // Step 6: Security - Malformed payload resilience check & RoomCode sanitization
+  console.log('6. Testing Security Resilience with malformed socket inputs & room code sanitization...');
+
+  // Test room code sanitization in RoomManager
+  const oversizedRoom = roomManager.getOrCreateRoom('  VERY_LONG_ROOM_CODE_123456789_SPECIAL!@#$$%  ');
+  if (oversizedRoom.roomCode.length > 10 || /[^A-Z0-9]/.test(oversizedRoom.roomCode)) {
+    throw new Error(`Room code was not properly sanitized! Got: "${oversizedRoom.roomCode}"`);
+  }
+  if (oversizedRoom.roomCode !== 'VERYLONGRO') {
+    throw new Error(`Unexpected sanitized room code: "${oversizedRoom.roomCode}"`);
+  }
+  console.log(`✓ VERIFIED: Oversized room code sanitized to "${oversizedRoom.roomCode}" (length <= 10)`);
+
   client1.emit('submit_answer', null);
   client1.emit('submit_answer', { answer: 12345 });
   client1.emit('send_reaction', null);
