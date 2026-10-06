@@ -1,16 +1,11 @@
 import React, { useMemo } from 'react';
 import { Trophy, Flame, CheckCircle, Clock, Crown } from 'lucide-react';
 
-/**
- * ⚡ Bolt Optimization:
- * Memoize Scoreboard component with React.memo and sorted player calculations with useMemo.
- * Prevents re-sorting and DOM re-renders during second-by-second timer_tick state updates.
- */
 function Scoreboard({ players, currentUserId, isPlaying }) {
-  const sortedPlayers = useMemo(
-    () => [...players].sort((a, b) => b.score - a.score),
-    [players]
-  );
+  // ⚡ Bolt Optimization: Memoize sorted players to avoid array allocations and re-sorting on every timer tick.
+  const sortedPlayers = useMemo(() => {
+    return [...players].sort((a, b) => b.score - a.score);
+  }, [players]);
 
   return (
     <div className="glass-panel" style={{
@@ -159,4 +154,5 @@ function Scoreboard({ players, currentUserId, isPlaying }) {
   );
 }
 
+// ⚡ Bolt Optimization: React.memo prevents Scoreboard from re-rendering on 1-second timer ticks.
 export default React.memo(Scoreboard);

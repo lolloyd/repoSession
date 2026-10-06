@@ -40,6 +40,15 @@ async function runTest() {
       const room = roomManager.getRoomBySocket(socket.id);
       if (room) room.updateSettings(settings, socket.id);
     });
+    socket.on('add_bot', () => {
+      const room = roomManager.getRoomBySocket(socket.id);
+      if (room) room.addBot(socket.id);
+    });
+    socket.on('remove_bot', (data) => {
+      const { botId } = data || {};
+      const room = roomManager.getRoomBySocket(socket.id);
+      if (room) room.removeBot(botId, socket.id);
+    });
     socket.on('disconnect', () => {
       roomManager.leaveRoom(socket);
     });
@@ -128,8 +137,19 @@ async function runTest() {
   const alicePlayer = p1State.players.find(p => p.name === 'Alice');
   console.log(`✓ Alice score: ${alicePlayer.score} pts, streak: ${alicePlayer.streak}`);
 
-  // Step 6: Security - Malformed payload resilience check
-  console.log('6. Testing Security Resilience with malformed socket inputs...');
+  // Step 6: Security - Malformed payload resilience check & RoomCode sanitization
+  console.log('6. Testing Security Resilience with malformed socket inputs & room code sanitization...');
+
+  // Test room code sanitization in RoomManager
+  const oversizedRoom = roomManager.getOrCreateRoom('  VERY_LONG_ROOM_CODE_123456789_SPECIAL!@#$$%  ');
+  if (oversizedRoom.roomCode.length > 10 || /[^A-Z0-9]/.test(oversizedRoom.roomCode)) {
+    throw new Error(`Room code was not properly sanitized! Got: "${oversizedRoom.roomCode}"`);
+  }
+  if (oversizedRoom.roomCode !== 'VERYLONGRO') {
+    throw new Error(`Unexpected sanitized room code: "${oversizedRoom.roomCode}"`);
+  }
+  console.log(`✓ VERIFIED: Oversized room code sanitized to "${oversizedRoom.roomCode}" (length <= 10)`);
+
   client1.emit('submit_answer', null);
   client1.emit('submit_answer', { answer: 12345 });
   client1.emit('send_reaction', null);
@@ -141,6 +161,13 @@ async function runTest() {
   if (p1State.settings.totalRounds !== 5 || p1State.settings.roundTime !== 30 || p1State.settings.showHints !== false) {
     throw new Error('Valid settings update failed after malformed attempts');
   }
+
+  // Room code length sanitization check
+  const longRoom = roomManager.getOrCreateRoom('VERYLONGROOMCODE123456789');
+  if (longRoom.roomCode.length > 10) {
+    throw new Error(`Room code length exceeds 10 chars: ${longRoom.roomCode}`);
+  }
+
   console.log('✓ VERIFIED: Server survived malformed inputs and settings without crashing!');
 
   // Cleanup

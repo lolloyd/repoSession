@@ -254,6 +254,7 @@ function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPl
       }}>
         <input
           type="text"
+          aria-label="Chat or guess message"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={isPlaying ? "Chat or guess here..." : "Type a message to team..."}
@@ -291,4 +292,5 @@ function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPl
   );
 }
 
+// ⚡ Bolt Optimization: React.memo prevents ChatFeed from re-rendering on 1-second timer ticks.
 export default React.memo(ChatFeed);

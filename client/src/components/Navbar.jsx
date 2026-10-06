@@ -200,4 +200,5 @@ function Navbar({ roomCode, playerCount, onOpenRules }) {
   );
 }
 
+// ⚡ Bolt Optimization: React.memo prevents Navbar from re-rendering on 1-second timer ticks.
 export default React.memo(Navbar);

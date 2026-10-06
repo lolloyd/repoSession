@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { io } from 'socket.io-client';
 import Navbar from './components/Navbar';
 import LoginScreen from './components/LoginScreen';
@@ -85,6 +85,10 @@ export default function App() {
   // Memoize socket event action callbacks with useCallback so child components
   // (ChatFeed, Scoreboard, Navbar, etc.) wrapped in React.memo skip re-rendering
   // on second-by-second timer_tick state updates in App.
+  // ⚡ Bolt Optimization: Memoize handlers with useCallback so React.memo child components
+  // (Navbar, ChatFeed, Scoreboard) don't re-render when timer ticks update roomState.
+  const handleOpenRules = useCallback(() => setShowRules(true), []);
+
   const handleJoinRoom = useCallback(({ roomCode, playerName, avatar }) => {
     if (socket) {
       socket.emit('join_room', { roomCode, playerName, avatar });
@@ -149,7 +153,10 @@ export default function App() {
   const handleCloseRules = useCallback(() => setShowRules(false), []);
 
   const isHost = roomState?.hostId === currentUserId;
-  const currentPlayer = roomState?.players.find((p) => p.id === currentUserId);
+  const currentPlayer = useMemo(
+    () => roomState?.players.find((p) => p.id === currentUserId),
+    [roomState?.players, currentUserId]
+  );
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
