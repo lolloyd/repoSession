@@ -21,6 +21,14 @@ const roomManager = new RoomManager(io);
 app.use(cors());
 app.use(express.json());
 
+// Express security headers
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  next();
+});
+
 // Serve extracted puzzle images statically
 app.use('/puzzles', express.static(path.join(__dirname, '../public/puzzles')));
 app.use('/puzzles', express.static(path.join(__dirname, '../client/public/puzzles')));
