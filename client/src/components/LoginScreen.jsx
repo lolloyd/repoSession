@@ -94,6 +94,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
               <button
                 type="button"
                 onClick={handleRandomizeAvatar}
+                aria-label="Pick random avatar"
+                title="Pick random avatar"
                 style={{
                   background: 'none',
                   color: 'var(--c-seafoam-dark)',
@@ -117,6 +119,8 @@ export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
                   key={av}
                   type="button"
                   onClick={() => setAvatar(av)}
+                  aria-label={`Select ${av} avatar`}
+                  title={`Select ${av} avatar`}
                   style={{
                     background: avatar === av ? 'var(--c-seafoam-bg)' : '#ffffff',
                     border: avatar === av ? '2px solid var(--c-seafoam)' : '1px solid var(--border-color)',
