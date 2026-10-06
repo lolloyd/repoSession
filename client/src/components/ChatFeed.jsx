@@ -3,7 +3,12 @@ import { Send, MessageSquare } from 'lucide-react';
 
 const QUICK_REACTIONS = ['👏', '🔥', '😂', '💡', '🤔', '🎉'];
 
-export default function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPlaying }) {
+/**
+ * ⚡ Bolt Optimization:
+ * Memoize ChatFeed component with React.memo so it skips re-rendering on every
+ * second-by-second timer_tick state update when message/player props are unchanged.
+ */
+function ChatFeed({ messages, onSendMessage, onSendReaction, currentPlayer, isPlaying }) {
   const [inputText, setInputText] = useState('');
   const messagesEndRef = useRef(null);
 
@@ -249,6 +254,7 @@ export default function ChatFeed({ messages, onSendMessage, onSendReaction, curr
       }}>
         <input
           type="text"
+          aria-label="Chat or guess message"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={isPlaying ? "Chat or guess here..." : "Type a message to team..."}
@@ -285,3 +291,6 @@ export default function ChatFeed({ messages, onSendMessage, onSendReaction, curr
     </div>
   );
 }
+
+// ⚡ Bolt Optimization: React.memo prevents ChatFeed from re-rendering on 1-second timer ticks.
+export default React.memo(ChatFeed);
