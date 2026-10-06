@@ -81,6 +81,10 @@ export default function App() {
     };
   }, []);
 
+  // ⚡ Bolt Optimization:
+  // Memoize socket event action callbacks with useCallback so child components
+  // (ChatFeed, Scoreboard, Navbar, etc.) wrapped in React.memo skip re-rendering
+  // on second-by-second timer_tick state updates in App.
   // ⚡ Bolt Optimization: Memoize handlers with useCallback so React.memo child components
   // (Navbar, ChatFeed, Scoreboard) don't re-render when timer ticks update roomState.
   const handleOpenRules = useCallback(() => setShowRules(true), []);
@@ -144,6 +148,9 @@ export default function App() {
       socket.emit('reset_lobby');
     }
   }, [socket]);
+
+  const handleOpenRules = useCallback(() => setShowRules(true), []);
+  const handleCloseRules = useCallback(() => setShowRules(false), []);
 
   const isHost = roomState?.hostId === currentUserId;
   const currentPlayer = useMemo(
@@ -295,7 +302,7 @@ export default function App() {
 
       {/* Rules Modal */}
       {showRules && (
-        <HowToPlayModal onClose={() => setShowRules(false)} />
+        <HowToPlayModal onClose={handleCloseRules} />
       )}
     </div>
   );

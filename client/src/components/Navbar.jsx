@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Volume2, VolumeX, Copy, Check, Users, HelpCircle } from 'lucide-react';
 import { sounds } from '../utils/sound';
 
+/**
+ * ⚡ Bolt Optimization:
+ * Memoize Navbar component with React.memo to prevent re-renders on timer_tick events.
+ */
 function Navbar({ roomCode, playerCount, onOpenRules }) {
   const [copied, setCopied] = useState(false);
   const [muted, setMuted] = useState(sounds.muted);
