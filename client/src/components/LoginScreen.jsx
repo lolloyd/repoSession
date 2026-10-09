@@ -4,6 +4,21 @@ import { sounds } from '../utils/sound';
 
 const AVATARS = ['🦊', '🐱', '🦁', '🐼', '🦉', '🦄', '🤖', '🚀', '⚡', '🍕', '🎨', '☕'];
 
+const AVATAR_LABELS = {
+  '🦊': 'Fox',
+  '🐱': 'Cat',
+  '🦁': 'Lion',
+  '🐼': 'Panda',
+  '🦉': 'Owl',
+  '🦄': 'Unicorn',
+  '🤖': 'Robot',
+  '🚀': 'Rocket',
+  '⚡': 'Lightning',
+  '🍕': 'Pizza',
+  '🎨': 'Palette',
+  '☕': 'Coffee'
+};
+
 export default function LoginScreen({ onJoinRoom, initialRoomCode }) {
   const [name, setName] = useState(() => localStorage.getItem('rebus_player_name') || '');
   const [avatar, setAvatar] = useState(() => localStorage.getItem('rebus_player_avatar') || '🦊');
